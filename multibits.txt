@@ -1,0 +1,872 @@
+Running finetune_ldm_decoder.py with num_bits=8...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 8, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_8", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 8 bits...
+Key: 11101011
+>>> Training...
+{"iteration": 0, "loss": 1.6388381719589233, "loss_w": 0.6782853603363037, "loss_i": 4.802763938903809, "psnr": 15.279520034790039, "bit_acc_avg": 0.625, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:36  iteration: 0.000000 (0.000000)  loss: 1.638838 (1.638838)  loss_w: 0.678285 (0.678285)  loss_i: 4.802764 (4.802764)  psnr: 15.279520 (15.279520)  bit_acc_avg: 0.625000 (0.625000)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 0.968812  data: 0.170364  max mem: 10880
+{"iteration": 10, "loss": 1.2791218757629395, "loss_w": 0.692662239074707, "loss_i": 2.932298183441162, "psnr": 20.863569259643555, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:17  iteration: 5.000000 (5.000000)  loss: 1.439996 (1.475719)  loss_w: 0.696049 (0.694666)  loss_i: 3.710874 (3.905262)  psnr: 16.711296 (17.130171)  bit_acc_avg: 0.406250 (0.426136)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.198114  data: 0.015628  max mem: 11289
+{"iteration": 20, "loss": 1.2789647579193115, "loss_w": 0.7020574808120728, "loss_i": 2.8845365047454834, "psnr": 26.207447052001953, "bit_acc_avg": 0.40625, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:12  iteration: 10.000000 (10.000000)  loss: 1.297365 (1.366985)  loss_w: 0.701101 (0.698343)  loss_i: 2.953301 (3.343208)  psnr: 20.863569 (21.209196)  bit_acc_avg: 0.406250 (0.421131)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121053  data: 0.000139  max mem: 11289
+{"iteration": 30, "loss": 1.2554099559783936, "loss_w": 0.7029128670692444, "loss_i": 2.7624850273132324, "psnr": 26.242931365966797, "bit_acc_avg": 0.40625, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: 1.255410 (1.340360)  loss_w: 0.702442 (0.698725)  loss_i: 2.774488 (3.208172)  psnr: 26.013279 (22.749864)  bit_acc_avg: 0.406250 (0.412298)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.121088  data: 0.000126  max mem: 11289
+{"iteration": 40, "loss": 1.3004170656204224, "loss_w": 0.7000181674957275, "loss_i": 3.0019943714141846, "psnr": 27.612998962402344, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: 1.288694 (1.336325)  loss_w: 0.700018 (0.699045)  loss_i: 2.977080 (3.186402)  psnr: 26.007048 (23.622634)  bit_acc_avg: 0.437500 (0.425305)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.121065  data: 0.000128  max mem: 11289
+{"iteration": 50, "loss": 1.3542118072509766, "loss_w": 0.7074071764945984, "loss_i": 3.234023094177246, "psnr": 26.845314025878906, "bit_acc_avg": 0.375, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:06  iteration: 40.000000 (25.000000)  loss: 1.323920 (1.332538)  loss_w: 0.700018 (0.699496)  loss_i: 3.111572 (3.165212)  psnr: 26.314493 (24.177699)  bit_acc_avg: 0.437500 (0.428309)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.121027  data: 0.000131  max mem: 11289
+{"iteration": 60, "loss": 1.2395633459091187, "loss_w": 0.6966385245323181, "loss_i": 2.7146239280700684, "psnr": 25.182693481445312, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: 1.274471 (1.319652)  loss_w: 0.699759 (0.699390)  loss_i: 2.854537 (3.101313)  psnr: 26.219276 (24.551820)  bit_acc_avg: 0.437500 (0.431352)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.121049  data: 0.000137  max mem: 11289
+{"iteration": 70, "loss": 1.2482221126556396, "loss_w": 0.698932409286499, "loss_i": 2.746448040008545, "psnr": 25.733963012695312, "bit_acc_avg": 0.40625, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:03  iteration: 60.000000 (35.000000)  loss: 1.238574 (1.304210)  loss_w: 0.698969 (0.699165)  loss_i: 2.690938 (3.025229)  psnr: 26.103180 (24.753660)  bit_acc_avg: 0.437500 (0.435739)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.121058  data: 0.000131  max mem: 11289
+{"iteration": 80, "loss": 1.134198546409607, "loss_w": 0.690938413143158, "loss_i": 2.2163004875183105, "psnr": 28.00058364868164, "bit_acc_avg": 0.625, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: 1.169557 (1.285780)  loss_w: 0.701639 (0.699451)  loss_i: 2.356652 (2.931645)  psnr: 26.476299 (25.086912)  bit_acc_avg: 0.406250 (0.435185)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.120979  data: 0.000125  max mem: 11289
+{"iteration": 90, "loss": 1.0968588590621948, "loss_w": 0.6939443349838257, "loss_i": 2.0145726203918457, "psnr": 29.44120216369629, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: 1.147194 (1.267560)  loss_w: 0.700932 (0.699434)  loss_i: 2.185287 (2.840631)  psnr: 27.403080 (25.398600)  bit_acc_avg: 0.437500 (0.434066)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.120899  data: 0.000124  max mem: 11289
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: 1.102015 (1.251734)  loss_w: 0.699492 (0.699415)  loss_i: 2.014573 (2.761595)  psnr: 28.251520 (25.706873)  bit_acc_avg: 0.437500 (0.435000)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.120877  data: 0.000122  max mem: 11289
+Train Total time: 0:00:13 (0.129007 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: 1.102015 (1.251734)  loss_w: 0.699492 (0.699415)  loss_i: 2.014573 (2.761595)  psnr: 28.251520 (25.706873)  bit_acc_avg: 0.437500 (0.435000)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:27  iteration: 0.000000 (0.000000)  psnr: 27.132826 (27.132826)  tpr_none: 0.406250 (0.406250)  fpr_none: 0.500000 (0.500000)  bit_acc_none: 0.406250 (0.406250)  word_acc_none: 0.000000 (0.000000)  time: 1.388850  data: 0.254598  max mem: 11289
+Eval  [10/63]  eta: 0:00:16  iteration: 5.000000 (5.000000)  psnr: 28.104452 (27.925093)  tpr_none: 0.416667 (0.416667)  fpr_none: 0.500000 (0.502841)  bit_acc_none: 0.445312 (0.443892)  word_acc_none: 0.000000 (0.000000)  time: 0.318323  data: 0.023286  max mem: 11289
+Eval  [20/63]  eta: 0:00:11  iteration: 10.000000 (10.000000)  psnr: 28.136440 (28.109866)  tpr_none: 0.416667 (0.420635)  fpr_none: 0.468750 (0.485119)  bit_acc_none: 0.468750 (0.463914)  word_acc_none: 0.000000 (0.002976)  time: 0.211330  data: 0.000164  max mem: 11289
+Eval  [30/63]  eta: 0:00:08  iteration: 20.000000 (15.000000)  psnr: 28.301960 (28.155515)  tpr_none: 0.416667 (0.420363)  fpr_none: 0.468750 (0.477823)  bit_acc_none: 0.476562 (0.468750)  word_acc_none: 0.000000 (0.002016)  time: 0.211444  data: 0.000178  max mem: 11289
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: 28.107563 (28.076499)  tpr_none: 0.427083 (0.421240)  fpr_none: 0.468750 (0.475610)  bit_acc_none: 0.476562 (0.471608)  word_acc_none: 0.000000 (0.001524)  time: 0.211513  data: 0.000173  max mem: 11289
+Eval  [50/63]  eta: 0:00:03  iteration: 40.000000 (25.000000)  psnr: 27.795895 (28.064625)  tpr_none: 0.427083 (0.422794)  fpr_none: 0.468750 (0.481005)  bit_acc_none: 0.476562 (0.471048)  word_acc_none: 0.000000 (0.001225)  time: 0.211557  data: 0.000161  max mem: 11289
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: 27.893898 (28.069077)  tpr_none: 0.427083 (0.425034)  fpr_none: 0.500000 (0.482070)  bit_acc_none: 0.484375 (0.474513)  word_acc_none: 0.000000 (0.002049)  time: 0.211522  data: 0.000151  max mem: 11289
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: 27.893898 (28.051795)  tpr_none: 0.427083 (0.424934)  fpr_none: 0.500000 (0.484127)  bit_acc_none: 0.476562 (0.473710)  word_acc_none: 0.000000 (0.001984)  time: 0.206593  data: 0.000149  max mem: 11289
+Eval Total time: 0:00:14 (0.226452 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: 27.893898 (28.051795)  tpr_none: 0.427083 (0.424934)  fpr_none: 0.500000 (0.484127)  bit_acc_none: 0.476562 (0.473710)  word_acc_none: 0.000000 (0.001984)
+
+
+real 254.47
+user 1748.80
+sys 151.87
+Generating '/tmp/nsys-report-f46f.qdstrm'
+[1/1] [0%                          ] num_bits_8.nsys-rep[1/1] [0%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [=15%                        ] num_bits_8.nsys-rep[1/1] [12%                         ] num_bits_8.nsys-rep[1/1] [10%                         ] num_bits_8.nsys-rep[1/1] [8%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [6%                          ] num_bits_8.nsys-rep[1/1] [5%                          ] num_bits_8.nsys-rep[1/1] [5%                          ] num_bits_8.nsys-rep[1/1] [5%                          ] num_bits_8.nsys-rep[1/1] [6%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [6%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [8%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [8%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [8%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [10%                         ] num_bits_8.nsys-rep[1/1] [9%                          ] num_bits_8.nsys-rep[1/1] [8%                          ] num_bits_8.nsys-rep[1/1] [7%                          ] num_bits_8.nsys-rep[1/1] [10%                         ] num_bits_8.nsys-rep[1/1] [9%                          ] num_bits_8.nsys-rep[1/1] [8%                          ] num_bits_8.nsys-rep[1/1] [10%                         ] num_bits_8.nsys-rep[1/1] [9%                          ] num_bits_8.nsys-rep[1/1] [10%                         ] num_bits_8.nsys-rep[1/1] [11%                         ] num_bits_8.nsys-rep[1/1] [10%                         ] num_bits_8.nsys-rep[1/1] [12%                         ] num_bits_8.nsys-rep[1/1] [11%                         ] num_bits_8.nsys-rep[1/1] [13%                         ] num_bits_8.nsys-rep[1/1] [12%                         ] num_bits_8.nsys-rep[1/1] [13%                         ] num_bits_8.nsys-rep[1/1] [14%                         ] num_bits_8.nsys-rep[1/1] [13%                         ] num_bits_8.nsys-rep[1/1] [14%                         ] num_bits_8.nsys-rep[1/1] [=15%                        ] num_bits_8.nsys-rep[1/1] [14%                         ] num_bits_8.nsys-rep[1/1] [=16%                        ] num_bits_8.nsys-rep[1/1] [=15%                        ] num_bits_8.nsys-rep[1/1] [=16%                        ] num_bits_8.nsys-rep[1/1] [=15%                        ] num_bits_8.nsys-rep[1/1] [=16%                        ] num_bits_8.nsys-rep[1/1] [=17%                        ] num_bits_8.nsys-rep[1/1] [=16%                        ] num_bits_8.nsys-rep[1/1] [=17%                        ] num_bits_8.nsys-rep[1/1] [=16%                        ] num_bits_8.nsys-rep[1/1] [=17%                        ] num_bits_8.nsys-rep[1/1] [=16%                        ] num_bits_8.nsys-rep[1/1] [=17%                        ] num_bits_8.nsys-rep[1/1] [==18%                       ] num_bits_8.nsys-rep[1/1] [=17%                        ] num_bits_8.nsys-rep[1/1] [==18%                       ] num_bits_8.nsys-rep[1/1] [=17%                        ] num_bits_8.nsys-rep[1/1] [==18%                       ] num_bits_8.nsys-rep[1/1] [==19%                       ] num_bits_8.nsys-rep[1/1] [==18%                       ] num_bits_8.nsys-rep[1/1] [==19%                       ] num_bits_8.nsys-rep[1/1] [==20%                       ] num_bits_8.nsys-rep[1/1] [==21%                       ] num_bits_8.nsys-rep[1/1] [===22%                      ] num_bits_8.nsys-rep[1/1] [===23%                      ] num_bits_8.nsys-rep[1/1] [===24%                      ] num_bits_8.nsys-rep[1/1] [====25%                     ] num_bits_8.nsys-rep[1/1] [====26%                     ] num_bits_8.nsys-rep[1/1] [====27%                     ] num_bits_8.nsys-rep[1/1] [====28%                     ] num_bits_8.nsys-rep[1/1] [=====29%                    ] num_bits_8.nsys-rep[1/1] [=====30%                    ] num_bits_8.nsys-rep[1/1] [=====31%                    ] num_bits_8.nsys-rep[1/1] [=====32%                    ] num_bits_8.nsys-rep[1/1] [======33%                   ] num_bits_8.nsys-rep[1/1] [======34%                   ] num_bits_8.nsys-rep[1/1] [======35%                   ] num_bits_8.nsys-rep[1/1] [=======36%                  ] num_bits_8.nsys-rep[1/1] [=======37%                  ] num_bits_8.nsys-rep[1/1] [=======38%                  ] num_bits_8.nsys-rep[1/1] [=======39%                  ] num_bits_8.nsys-rep[1/1] [========40%                 ] num_bits_8.nsys-rep[1/1] [========41%                 ] num_bits_8.nsys-rep[1/1] [========42%                 ] num_bits_8.nsys-rep[1/1] [=========43%                ] num_bits_8.nsys-rep[1/1] [=========44%                ] num_bits_8.nsys-rep[1/1] [=========45%                ] num_bits_8.nsys-rep[1/1] [=========46%                ] num_bits_8.nsys-rep[1/1] [==========47%               ] num_bits_8.nsys-rep[1/1] [==========48%               ] num_bits_8.nsys-rep[1/1] [==========49%               ] num_bits_8.nsys-rep[1/1] [===========50%              ] num_bits_8.nsys-rep[1/1] [===========51%              ] num_bits_8.nsys-rep[1/1] [===========52%              ] num_bits_8.nsys-rep[1/1] [===========53%              ] num_bits_8.nsys-rep[1/1] [============54%             ] num_bits_8.nsys-rep[1/1] [============55%             ] num_bits_8.nsys-rep[1/1] [============56%             ] num_bits_8.nsys-rep[1/1] [============57%             ] num_bits_8.nsys-rep[1/1] [=============58%            ] num_bits_8.nsys-rep[1/1] [=============59%            ] num_bits_8.nsys-rep[1/1] [=============60%            ] num_bits_8.nsys-rep[1/1] [==============61%           ] num_bits_8.nsys-rep[1/1] [==============62%           ] num_bits_8.nsys-rep[1/1] [==============63%           ] num_bits_8.nsys-rep[1/1] [==============64%           ] num_bits_8.nsys-rep[1/1] [===============65%          ] num_bits_8.nsys-rep[1/1] [===============66%          ] num_bits_8.nsys-rep[1/1] [===============67%          ] num_bits_8.nsys-rep[1/1] [================68%         ] num_bits_8.nsys-rep[1/1] [================69%         ] num_bits_8.nsys-rep[1/1] [================70%         ] num_bits_8.nsys-rep[1/1] [================71%         ] num_bits_8.nsys-rep[1/1] [=================72%        ] num_bits_8.nsys-rep[1/1] [=================73%        ] num_bits_8.nsys-rep[1/1] [=================74%        ] num_bits_8.nsys-rep[1/1] [==================75%       ] num_bits_8.nsys-rep[1/1] [==================76%       ] num_bits_8.nsys-rep[1/1] [==================77%       ] num_bits_8.nsys-rep[1/1] [==================78%       ] num_bits_8.nsys-rep[1/1] [===================79%      ] num_bits_8.nsys-rep[1/1] [===================80%      ] num_bits_8.nsys-rep[1/1] [========================100%] num_bits_8.nsys-rep[1/1] [========================100%] num_bits_8.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_8.nsys-rep
+Finished testing with num_bits=8
+---------------------------------------
+Running finetune_ldm_decoder.py with num_bits=16...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 16, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_16", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 16 bits...
+Key: 1110101101010000
+>>> Training...
+{"iteration": 0, "loss": 1.7643487453460693, "loss_w": 0.7122985124588013, "loss_i": 5.260251045227051, "psnr": 17.068191528320312, "bit_acc_avg": 0.3125, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:47  iteration: 0.000000 (0.000000)  loss: 1.764349 (1.764349)  loss_w: 0.712299 (0.712299)  loss_i: 5.260251 (5.260251)  psnr: 17.068192 (17.068192)  bit_acc_avg: 0.312500 (0.312500)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 1.078824  data: 0.168922  max mem: 10896
+{"iteration": 10, "loss": 1.2310535907745361, "loss_w": 0.692084789276123, "loss_i": 2.6948435306549072, "psnr": 20.12367057800293, "bit_acc_avg": 0.515625, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:18  iteration: 5.000000 (5.000000)  loss: 1.519988 (1.519421)  loss_w: 0.693197 (0.697078)  loss_i: 4.068343 (4.111719)  psnr: 17.607979 (17.303598)  bit_acc_avg: 0.500000 (0.478693)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.208172  data: 0.015496  max mem: 11305
+{"iteration": 20, "loss": 1.2706527709960938, "loss_w": 0.692313015460968, "loss_i": 2.8916988372802734, "psnr": 26.410167694091797, "bit_acc_avg": 0.484375, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:13  iteration: 10.000000 (10.000000)  loss: 1.271797 (1.396443)  loss_w: 0.692085 (0.693707)  loss_i: 2.914355 (3.513679)  psnr: 20.123671 (21.214544)  bit_acc_avg: 0.515625 (0.501488)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121094  data: 0.000154  max mem: 11305
+{"iteration": 30, "loss": 1.2727186679840088, "loss_w": 0.688713788986206, "loss_i": 2.9200239181518555, "psnr": 29.203094482421875, "bit_acc_avg": 0.53125, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: 1.271797 (1.366947)  loss_w: 0.688714 (0.692221)  loss_i: 2.914355 (3.373633)  psnr: 27.271385 (23.238321)  bit_acc_avg: 0.531250 (0.510081)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.121067  data: 0.000145  max mem: 11305
+{"iteration": 40, "loss": 1.2888011932373047, "loss_w": 0.6889843940734863, "loss_i": 2.999083995819092, "psnr": 27.84370994567871, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: 1.288784 (1.348244)  loss_w: 0.688714 (0.691324)  loss_i: 2.999084 (3.284602)  psnr: 27.745279 (24.448237)  bit_acc_avg: 0.531250 (0.524009)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.121045  data: 0.000133  max mem: 11305
+{"iteration": 50, "loss": 1.245967149734497, "loss_w": 0.683113157749176, "loss_i": 2.814269781112671, "psnr": 28.255123138427734, "bit_acc_avg": 0.578125, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:06  iteration: 40.000000 (25.000000)  loss: 1.285371 (1.333368)  loss_w: 0.688310 (0.690480)  loss_i: 2.977199 (3.214437)  psnr: 27.843710 (25.057934)  bit_acc_avg: 0.515625 (0.521140)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.121030  data: 0.000128  max mem: 11305
+{"iteration": 60, "loss": 1.2483792304992676, "loss_w": 0.685969352722168, "loss_i": 2.812049150466919, "psnr": 28.406391143798828, "bit_acc_avg": 0.59375, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: 1.241507 (1.313054)  loss_w: 0.688310 (0.690415)  loss_i: 2.748219 (3.113197)  psnr: 27.667253 (25.547715)  bit_acc_avg: 0.515625 (0.524078)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.121040  data: 0.000123  max mem: 11305
+{"iteration": 70, "loss": 1.194413661956787, "loss_w": 0.6902724504470825, "loss_i": 2.5207061767578125, "psnr": 27.870330810546875, "bit_acc_avg": 0.5625, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:04  iteration: 60.000000 (35.000000)  loss: 1.194414 (1.290858)  loss_w: 0.689812 (0.690283)  loss_i: 2.500876 (3.002876)  psnr: 28.053082 (25.946439)  bit_acc_avg: 0.531250 (0.522667)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.121089  data: 0.000122  max mem: 11305
+{"iteration": 80, "loss": 1.1063036918640137, "loss_w": 0.684135377407074, "loss_i": 2.1108415126800537, "psnr": 30.13762664794922, "bit_acc_avg": 0.546875, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: 1.140773 (1.272595)  loss_w: 0.690272 (0.690147)  loss_i: 2.266729 (2.912238)  psnr: 28.504595 (26.322620)  bit_acc_avg: 0.531250 (0.525077)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.121075  data: 0.000123  max mem: 11305
+{"iteration": 90, "loss": 1.1474124193191528, "loss_w": 0.6803975105285645, "loss_i": 2.3350744247436523, "psnr": 30.987533569335938, "bit_acc_avg": 0.515625, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: 1.125021 (1.253683)  loss_w: 0.689034 (0.689763)  loss_i: 2.168981 (2.819600)  psnr: 29.217417 (26.719141)  bit_acc_avg: 0.546875 (0.528846)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.120987  data: 0.000123  max mem: 11305
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: 1.094788 (1.239023)  loss_w: 0.688659 (0.689765)  loss_i: 2.021878 (2.746287)  psnr: 30.137627 (27.005761)  bit_acc_avg: 0.546875 (0.527500)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.120910  data: 0.000121  max mem: 11305
+Train Total time: 0:00:13 (0.130427 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: 1.094788 (1.239023)  loss_w: 0.688659 (0.689765)  loss_i: 2.021878 (2.746287)  psnr: 30.137627 (27.005761)  bit_acc_avg: 0.546875 (0.527500)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:33  iteration: 0.000000 (0.000000)  psnr: 28.724413 (28.724413)  tpr_none: 0.382812 (0.382812)  fpr_none: 0.304688 (0.304688)  bit_acc_none: 0.457031 (0.457031)  word_acc_none: 0.000000 (0.000000)  time: 1.477187  data: 0.243537  max mem: 11305
+Eval  [10/63]  eta: 0:00:17  iteration: 5.000000 (5.000000)  psnr: 29.624294 (29.450890)  tpr_none: 0.382812 (0.389205)  fpr_none: 0.312500 (0.304688)  bit_acc_none: 0.488281 (0.492898)  word_acc_none: 0.000000 (0.000000)  time: 0.326651  data: 0.022299  max mem: 11305
+Eval  [20/63]  eta: 0:00:11  iteration: 10.000000 (10.000000)  psnr: 29.633936 (29.572761)  tpr_none: 0.375000 (0.380952)  fpr_none: 0.312500 (0.308408)  bit_acc_none: 0.488281 (0.491071)  word_acc_none: 0.000000 (0.000000)  time: 0.211617  data: 0.000176  max mem: 11305
+Eval  [30/63]  eta: 0:00:08  iteration: 20.000000 (15.000000)  psnr: 29.833189 (29.652313)  tpr_none: 0.367188 (0.378276)  fpr_none: 0.304688 (0.304688)  bit_acc_none: 0.488281 (0.496094)  word_acc_none: 0.000000 (0.000000)  time: 0.211695  data: 0.000163  max mem: 11305
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: 29.524315 (29.582672)  tpr_none: 0.375000 (0.377477)  fpr_none: 0.289062 (0.302782)  bit_acc_none: 0.507812 (0.496189)  word_acc_none: 0.000000 (0.000000)  time: 0.211782  data: 0.000154  max mem: 11305
+Eval  [50/63]  eta: 0:00:03  iteration: 40.000000 (25.000000)  psnr: 29.337894 (29.564878)  tpr_none: 0.375000 (0.376838)  fpr_none: 0.296875 (0.305300)  bit_acc_none: 0.484375 (0.496247)  word_acc_none: 0.000000 (0.000000)  time: 0.211793  data: 0.000155  max mem: 11305
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: 29.545273 (29.564998)  tpr_none: 0.367188 (0.375897)  fpr_none: 0.312500 (0.305712)  bit_acc_none: 0.496094 (0.499103)  word_acc_none: 0.000000 (0.000000)  time: 0.211762  data: 0.000147  max mem: 11305
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: 29.529928 (29.553280)  tpr_none: 0.367188 (0.375620)  fpr_none: 0.312500 (0.307788)  bit_acc_none: 0.507812 (0.499876)  word_acc_none: 0.000000 (0.000000)  time: 0.206837  data: 0.000145  max mem: 11305
+Eval Total time: 0:00:14 (0.228192 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: 29.529928 (29.553280)  tpr_none: 0.367188 (0.375620)  fpr_none: 0.312500 (0.307788)  bit_acc_none: 0.507812 (0.499876)  word_acc_none: 0.000000 (0.000000)
+
+
+real 255.64
+user 1795.60
+sys 151.46
+Generating '/tmp/nsys-report-c370.qdstrm'
+[1/1] [0%                          ] num_bits_16.nsys-rep[1/1] [0%                          ] num_bits_16.nsys-rep[1/1] [8%                          ] num_bits_16.nsys-rep[1/1] [=16%                        ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [8%                          ] num_bits_16.nsys-rep[1/1] [7%                          ] num_bits_16.nsys-rep[1/1] [6%                          ] num_bits_16.nsys-rep[1/1] [7%                          ] num_bits_16.nsys-rep[1/1] [8%                          ] num_bits_16.nsys-rep[1/1] [9%                          ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [9%                          ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [11%                         ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [11%                         ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [13%                         ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [11%                         ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [9%                          ] num_bits_16.nsys-rep[1/1] [13%                         ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [11%                         ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [9%                          ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [11%                         ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [9%                          ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [11%                         ] num_bits_16.nsys-rep[1/1] [10%                         ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [11%                         ] num_bits_16.nsys-rep[1/1] [13%                         ] num_bits_16.nsys-rep[1/1] [12%                         ] num_bits_16.nsys-rep[1/1] [14%                         ] num_bits_16.nsys-rep[1/1] [13%                         ] num_bits_16.nsys-rep[1/1] [=15%                        ] num_bits_16.nsys-rep[1/1] [14%                         ] num_bits_16.nsys-rep[1/1] [=16%                        ] num_bits_16.nsys-rep[1/1] [=15%                        ] num_bits_16.nsys-rep[1/1] [14%                         ] num_bits_16.nsys-rep[1/1] [=16%                        ] num_bits_16.nsys-rep[1/1] [=15%                        ] num_bits_16.nsys-rep[1/1] [=16%                        ] num_bits_16.nsys-rep[1/1] [=17%                        ] num_bits_16.nsys-rep[1/1] [=16%                        ] num_bits_16.nsys-rep[1/1] [=17%                        ] num_bits_16.nsys-rep[1/1] [=16%                        ] num_bits_16.nsys-rep[1/1] [==18%                       ] num_bits_16.nsys-rep[1/1] [=17%                        ] num_bits_16.nsys-rep[1/1] [==18%                       ] num_bits_16.nsys-rep[1/1] [=17%                        ] num_bits_16.nsys-rep[1/1] [==18%                       ] num_bits_16.nsys-rep[1/1] [=17%                        ] num_bits_16.nsys-rep[1/1] [==18%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==18%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==18%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==18%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==20%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==20%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==20%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==20%                       ] num_bits_16.nsys-rep[1/1] [==19%                       ] num_bits_16.nsys-rep[1/1] [==20%                       ] num_bits_16.nsys-rep[1/1] [==21%                       ] num_bits_16.nsys-rep[1/1] [===22%                      ] num_bits_16.nsys-rep[1/1] [===23%                      ] num_bits_16.nsys-rep[1/1] [===24%                      ] num_bits_16.nsys-rep[1/1] [====25%                     ] num_bits_16.nsys-rep[1/1] [====26%                     ] num_bits_16.nsys-rep[1/1] [====27%                     ] num_bits_16.nsys-rep[1/1] [====28%                     ] num_bits_16.nsys-rep[1/1] [=====29%                    ] num_bits_16.nsys-rep[1/1] [=====30%                    ] num_bits_16.nsys-rep[1/1] [=====31%                    ] num_bits_16.nsys-rep[1/1] [=====32%                    ] num_bits_16.nsys-rep[1/1] [======33%                   ] num_bits_16.nsys-rep[1/1] [======34%                   ] num_bits_16.nsys-rep[1/1] [======35%                   ] num_bits_16.nsys-rep[1/1] [=======36%                  ] num_bits_16.nsys-rep[1/1] [=======37%                  ] num_bits_16.nsys-rep[1/1] [=======38%                  ] num_bits_16.nsys-rep[1/1] [=======39%                  ] num_bits_16.nsys-rep[1/1] [========40%                 ] num_bits_16.nsys-rep[1/1] [========41%                 ] num_bits_16.nsys-rep[1/1] [========42%                 ] num_bits_16.nsys-rep[1/1] [=========43%                ] num_bits_16.nsys-rep[1/1] [=========44%                ] num_bits_16.nsys-rep[1/1] [=========45%                ] num_bits_16.nsys-rep[1/1] [=========46%                ] num_bits_16.nsys-rep[1/1] [==========47%               ] num_bits_16.nsys-rep[1/1] [==========48%               ] num_bits_16.nsys-rep[1/1] [==========49%               ] num_bits_16.nsys-rep[1/1] [===========50%              ] num_bits_16.nsys-rep[1/1] [===========51%              ] num_bits_16.nsys-rep[1/1] [===========52%              ] num_bits_16.nsys-rep[1/1] [===========53%              ] num_bits_16.nsys-rep[1/1] [============54%             ] num_bits_16.nsys-rep[1/1] [============55%             ] num_bits_16.nsys-rep[1/1] [============56%             ] num_bits_16.nsys-rep[1/1] [============57%             ] num_bits_16.nsys-rep[1/1] [=============58%            ] num_bits_16.nsys-rep[1/1] [=============59%            ] num_bits_16.nsys-rep[1/1] [=============60%            ] num_bits_16.nsys-rep[1/1] [==============61%           ] num_bits_16.nsys-rep[1/1] [==============62%           ] num_bits_16.nsys-rep[1/1] [==============63%           ] num_bits_16.nsys-rep[1/1] [==============64%           ] num_bits_16.nsys-rep[1/1] [===============65%          ] num_bits_16.nsys-rep[1/1] [===============66%          ] num_bits_16.nsys-rep[1/1] [===============67%          ] num_bits_16.nsys-rep[1/1] [================68%         ] num_bits_16.nsys-rep[1/1] [================69%         ] num_bits_16.nsys-rep[1/1] [================70%         ] num_bits_16.nsys-rep[1/1] [================71%         ] num_bits_16.nsys-rep[1/1] [=================72%        ] num_bits_16.nsys-rep[1/1] [=================73%        ] num_bits_16.nsys-rep[1/1] [=================74%        ] num_bits_16.nsys-rep[1/1] [==================75%       ] num_bits_16.nsys-rep[1/1] [==================76%       ] num_bits_16.nsys-rep[1/1] [==================77%       ] num_bits_16.nsys-rep[1/1] [==================78%       ] num_bits_16.nsys-rep[1/1] [===================79%      ] num_bits_16.nsys-rep[1/1] [===================80%      ] num_bits_16.nsys-rep[1/1] [========================100%] num_bits_16.nsys-rep[1/1] [========================100%] num_bits_16.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_16.nsys-rep
+Finished testing with num_bits=16
+---------------------------------------
+Running finetune_ldm_decoder.py with num_bits=24...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 24, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_24", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 24 bits...
+Key: 111010110101000001010111
+>>> Training...
+{"iteration": 0, "loss": 1.626397728919983, "loss_w": 0.7018694281578064, "loss_i": 4.622641563415527, "psnr": 16.10832977294922, "bit_acc_avg": 0.5104166865348816, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:47  iteration: 0.000000 (0.000000)  loss: 1.626398 (1.626398)  loss_w: 0.701869 (0.701869)  loss_i: 4.622642 (4.622642)  psnr: 16.108330 (16.108330)  bit_acc_avg: 0.510417 (0.510417)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 1.074071  data: 0.172411  max mem: 10912
+{"iteration": 10, "loss": 1.2938222885131836, "loss_w": 0.6999714374542236, "loss_i": 2.9692542552948, "psnr": 21.638763427734375, "bit_acc_avg": 0.4479166865348816, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:18  iteration: 5.000000 (5.000000)  loss: 1.580808 (1.522870)  loss_w: 0.700434 (0.700561)  loss_i: 4.383411 (4.111545)  psnr: 16.564617 (17.347758)  bit_acc_avg: 0.458333 (0.457386)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.207798  data: 0.015796  max mem: 11321
+{"iteration": 20, "loss": 1.3126106262207031, "loss_w": 0.6946308612823486, "loss_i": 3.0898985862731934, "psnr": 28.07758903503418, "bit_acc_avg": 0.4791666865348816, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:13  iteration: 10.000000 (10.000000)  loss: 1.303857 (1.399012)  loss_w: 0.696334 (0.698029)  loss_i: 3.064357 (3.504915)  psnr: 21.638763 (20.973372)  bit_acc_avg: 0.468750 (0.472222)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121149  data: 0.000131  max mem: 11321
+{"iteration": 30, "loss": 1.3561503887176514, "loss_w": 0.7024161219596863, "loss_i": 3.2686715126037598, "psnr": 25.50033187866211, "bit_acc_avg": 0.40625, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: 1.282088 (1.368720)  loss_w: 0.695626 (0.698524)  loss_i: 2.932659 (3.350979)  psnr: 26.922716 (23.048006)  bit_acc_avg: 0.458333 (0.461694)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.121121  data: 0.000136  max mem: 11321
+{"iteration": 40, "loss": 1.3868637084960938, "loss_w": 0.693760335445404, "loss_i": 3.4655165672302246, "psnr": 25.364608764648438, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: 1.300565 (1.353971)  loss_w: 0.696045 (0.697659)  loss_i: 3.002570 (3.281560)  psnr: 27.848175 (24.184636)  bit_acc_avg: 0.458333 (0.465955)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.121140  data: 0.000134  max mem: 11321
+{"iteration": 50, "loss": 1.2714276313781738, "loss_w": 0.7009804248809814, "loss_i": 2.852236032485962, "psnr": 28.672748565673828, "bit_acc_avg": 0.3958333432674408, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:06  iteration: 40.000000 (25.000000)  loss: 1.285988 (1.339980)  loss_w: 0.696950 (0.698058)  loss_i: 2.925272 (3.209611)  psnr: 27.902149 (24.884140)  bit_acc_avg: 0.468750 (0.462214)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.121158  data: 0.000134  max mem: 11321
+{"iteration": 60, "loss": 1.1695773601531982, "loss_w": 0.7002092599868774, "loss_i": 2.3468406200408936, "psnr": 30.242130279541016, "bit_acc_avg": 0.4270833432674408, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: 1.270594 (1.324461)  loss_w: 0.700581 (0.698355)  loss_i: 2.869544 (3.130533)  psnr: 27.707998 (25.485312)  bit_acc_avg: 0.447917 (0.461407)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.121092  data: 0.000139  max mem: 11321
+{"iteration": 70, "loss": 1.1936352252960205, "loss_w": 0.7011880874633789, "loss_i": 2.462235450744629, "psnr": 28.819026947021484, "bit_acc_avg": 0.4270833432674408, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:04  iteration: 60.000000 (35.000000)  loss: 1.219698 (1.309244)  loss_w: 0.700209 (0.698372)  loss_i: 2.612219 (3.054356)  psnr: 28.729542 (25.973457)  bit_acc_avg: 0.437500 (0.460534)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.121074  data: 0.000132  max mem: 11321
+{"iteration": 80, "loss": 1.1254137754440308, "loss_w": 0.6980031728744507, "loss_i": 2.1370527744293213, "psnr": 29.750804901123047, "bit_acc_avg": 0.4479166865348816, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: 1.193469 (1.293431)  loss_w: 0.698003 (0.698540)  loss_i: 2.471446 (2.974458)  psnr: 29.061947 (26.327195)  bit_acc_avg: 0.447917 (0.460262)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.121038  data: 0.000125  max mem: 11321
+{"iteration": 90, "loss": 1.0933222770690918, "loss_w": 0.6948239207267761, "loss_i": 1.992491602897644, "psnr": 30.161029815673828, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: 1.142843 (1.274293)  loss_w: 0.698580 (0.698908)  loss_i: 2.203200 (2.876923)  psnr: 29.196932 (26.708137)  bit_acc_avg: 0.447917 (0.459707)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.120999  data: 0.000124  max mem: 11321
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: 1.114015 (1.258262)  loss_w: 0.698003 (0.698682)  loss_i: 2.066340 (2.797900)  psnr: 29.838902 (27.045100)  bit_acc_avg: 0.468750 (0.462292)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.120992  data: 0.000124  max mem: 11321
+Train Total time: 0:00:13 (0.130149 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: 1.114015 (1.258262)  loss_w: 0.698003 (0.698682)  loss_i: 2.066340 (2.797900)  psnr: 29.838902 (27.045100)  bit_acc_avg: 0.468750 (0.462292)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:30  iteration: 0.000000 (0.000000)  psnr: 29.032894 (29.032894)  tpr_none: 0.490385 (0.490385)  fpr_none: 0.613636 (0.613636)  bit_acc_none: 0.518229 (0.518229)  word_acc_none: 0.000000 (0.000000)  time: 1.431432  data: 0.230368  max mem: 11321
+Eval  [10/63]  eta: 0:00:17  iteration: 5.000000 (5.000000)  psnr: 30.054161 (29.938479)  tpr_none: 0.471154 (0.471154)  fpr_none: 0.562500 (0.563017)  bit_acc_none: 0.481771 (0.475616)  word_acc_none: 0.000000 (0.000000)  time: 0.323335  data: 0.021131  max mem: 11321
+Eval  [20/63]  eta: 0:00:11  iteration: 10.000000 (10.000000)  psnr: 30.094126 (29.999403)  tpr_none: 0.466346 (0.474817)  fpr_none: 0.568182 (0.562229)  bit_acc_none: 0.473958 (0.475074)  word_acc_none: 0.000000 (0.000000)  time: 0.212523  data: 0.000197  max mem: 11321
+Eval  [30/63]  eta: 0:00:08  iteration: 20.000000 (15.000000)  psnr: 30.193121 (30.057991)  tpr_none: 0.475962 (0.475651)  fpr_none: 0.573864 (0.568365)  bit_acc_none: 0.481771 (0.480175)  word_acc_none: 0.000000 (0.000000)  time: 0.212551  data: 0.000182  max mem: 11321
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: 29.832279 (29.979767)  tpr_none: 0.475962 (0.476079)  fpr_none: 0.579545 (0.571092)  bit_acc_none: 0.481771 (0.480501)  word_acc_none: 0.000000 (0.000000)  time: 0.212638  data: 0.000180  max mem: 11321
+Eval  [50/63]  eta: 0:00:03  iteration: 40.000000 (25.000000)  psnr: 29.639498 (29.945212)  tpr_none: 0.475962 (0.475584)  fpr_none: 0.579545 (0.571858)  bit_acc_none: 0.481771 (0.480137)  word_acc_none: 0.000000 (0.000000)  time: 0.212671  data: 0.000176  max mem: 11321
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: 29.804356 (29.946364)  tpr_none: 0.471154 (0.473991)  fpr_none: 0.573864 (0.572187)  bit_acc_none: 0.484375 (0.480533)  word_acc_none: 0.000000 (0.000000)  time: 0.212607  data: 0.000160  max mem: 11321
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: 29.804356 (29.932383)  tpr_none: 0.480769 (0.475122)  fpr_none: 0.573864 (0.572601)  bit_acc_none: 0.484375 (0.480985)  word_acc_none: 0.000000 (0.000000)  time: 0.207682  data: 0.000159  max mem: 11321
+Eval Total time: 0:00:14 (0.228181 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: 29.804356 (29.932383)  tpr_none: 0.480769 (0.475122)  fpr_none: 0.573864 (0.572601)  bit_acc_none: 0.484375 (0.480985)  word_acc_none: 0.000000 (0.000000)
+
+
+real 256.31
+user 1810.38
+sys 150.82
+Generating '/tmp/nsys-report-d7dc.qdstrm'
+[1/1] [0%                          ] num_bits_24.nsys-rep[1/1] [0%                          ] num_bits_24.nsys-rep[1/1] [8%                          ] num_bits_24.nsys-rep[1/1] [=17%                        ] num_bits_24.nsys-rep[1/1] [13%                         ] num_bits_24.nsys-rep[1/1] [10%                         ] num_bits_24.nsys-rep[1/1] [9%                          ] num_bits_24.nsys-rep[1/1] [7%                          ] num_bits_24.nsys-rep[1/1] [6%                          ] num_bits_24.nsys-rep[1/1] [5%                          ] num_bits_24.nsys-rep[1/1] [5%                          ] num_bits_24.nsys-rep[1/1] [5%                          ] num_bits_24.nsys-rep[1/1] [6%                          ] num_bits_24.nsys-rep[1/1] [5%                          ] num_bits_24.nsys-rep[1/1] [6%                          ] num_bits_24.nsys-rep[1/1] [5%                          ] num_bits_24.nsys-rep[1/1] [9%                          ] num_bits_24.nsys-rep[1/1] [8%                          ] num_bits_24.nsys-rep[1/1] [7%                          ] num_bits_24.nsys-rep[1/1] [9%                          ] num_bits_24.nsys-rep[1/1] [8%                          ] num_bits_24.nsys-rep[1/1] [10%                         ] num_bits_24.nsys-rep[1/1] [9%                          ] num_bits_24.nsys-rep[1/1] [11%                         ] num_bits_24.nsys-rep[1/1] [10%                         ] num_bits_24.nsys-rep[1/1] [12%                         ] num_bits_24.nsys-rep[1/1] [11%                         ] num_bits_24.nsys-rep[1/1] [13%                         ] num_bits_24.nsys-rep[1/1] [12%                         ] num_bits_24.nsys-rep[1/1] [14%                         ] num_bits_24.nsys-rep[1/1] [13%                         ] num_bits_24.nsys-rep[1/1] [14%                         ] num_bits_24.nsys-rep[1/1] [13%                         ] num_bits_24.nsys-rep[1/1] [=15%                        ] num_bits_24.nsys-rep[1/1] [14%                         ] num_bits_24.nsys-rep[1/1] [=15%                        ] num_bits_24.nsys-rep[1/1] [=16%                        ] num_bits_24.nsys-rep[1/1] [=15%                        ] num_bits_24.nsys-rep[1/1] [=16%                        ] num_bits_24.nsys-rep[1/1] [=17%                        ] num_bits_24.nsys-rep[1/1] [=16%                        ] num_bits_24.nsys-rep[1/1] [=17%                        ] num_bits_24.nsys-rep[1/1] [=16%                        ] num_bits_24.nsys-rep[1/1] [=17%                        ] num_bits_24.nsys-rep[1/1] [=16%                        ] num_bits_24.nsys-rep[1/1] [==18%                       ] num_bits_24.nsys-rep[1/1] [=17%                        ] num_bits_24.nsys-rep[1/1] [==18%                       ] num_bits_24.nsys-rep[1/1] [=17%                        ] num_bits_24.nsys-rep[1/1] [==18%                       ] num_bits_24.nsys-rep[1/1] [=17%                        ] num_bits_24.nsys-rep[1/1] [==18%                       ] num_bits_24.nsys-rep[1/1] [==19%                       ] num_bits_24.nsys-rep[1/1] [==18%                       ] num_bits_24.nsys-rep[1/1] [==19%                       ] num_bits_24.nsys-rep[1/1] [==18%                       ] num_bits_24.nsys-rep[1/1] [==19%                       ] num_bits_24.nsys-rep[1/1] [==18%                       ] num_bits_24.nsys-rep[1/1] [==19%                       ] num_bits_24.nsys-rep[1/1] [==20%                       ] num_bits_24.nsys-rep[1/1] [==19%                       ] num_bits_24.nsys-rep[1/1] [==20%                       ] num_bits_24.nsys-rep[1/1] [==19%                       ] num_bits_24.nsys-rep[1/1] [==20%                       ] num_bits_24.nsys-rep[1/1] [==19%                       ] num_bits_24.nsys-rep[1/1] [==20%                       ] num_bits_24.nsys-rep[1/1] [==21%                       ] num_bits_24.nsys-rep[1/1] [===22%                      ] num_bits_24.nsys-rep[1/1] [===23%                      ] num_bits_24.nsys-rep[1/1] [===24%                      ] num_bits_24.nsys-rep[1/1] [====25%                     ] num_bits_24.nsys-rep[1/1] [====26%                     ] num_bits_24.nsys-rep[1/1] [====27%                     ] num_bits_24.nsys-rep[1/1] [====28%                     ] num_bits_24.nsys-rep[1/1] [=====29%                    ] num_bits_24.nsys-rep[1/1] [=====30%                    ] num_bits_24.nsys-rep[1/1] [=====31%                    ] num_bits_24.nsys-rep[1/1] [=====32%                    ] num_bits_24.nsys-rep[1/1] [======33%                   ] num_bits_24.nsys-rep[1/1] [======34%                   ] num_bits_24.nsys-rep[1/1] [======35%                   ] num_bits_24.nsys-rep[1/1] [=======36%                  ] num_bits_24.nsys-rep[1/1] [=======37%                  ] num_bits_24.nsys-rep[1/1] [=======38%                  ] num_bits_24.nsys-rep[1/1] [=======39%                  ] num_bits_24.nsys-rep[1/1] [========40%                 ] num_bits_24.nsys-rep[1/1] [========41%                 ] num_bits_24.nsys-rep[1/1] [========42%                 ] num_bits_24.nsys-rep[1/1] [=========43%                ] num_bits_24.nsys-rep[1/1] [=========44%                ] num_bits_24.nsys-rep[1/1] [=========45%                ] num_bits_24.nsys-rep[1/1] [=========46%                ] num_bits_24.nsys-rep[1/1] [==========47%               ] num_bits_24.nsys-rep[1/1] [==========48%               ] num_bits_24.nsys-rep[1/1] [==========49%               ] num_bits_24.nsys-rep[1/1] [===========50%              ] num_bits_24.nsys-rep[1/1] [===========51%              ] num_bits_24.nsys-rep[1/1] [===========52%              ] num_bits_24.nsys-rep[1/1] [===========53%              ] num_bits_24.nsys-rep[1/1] [============54%             ] num_bits_24.nsys-rep[1/1] [============55%             ] num_bits_24.nsys-rep[1/1] [============56%             ] num_bits_24.nsys-rep[1/1] [============57%             ] num_bits_24.nsys-rep[1/1] [=============58%            ] num_bits_24.nsys-rep[1/1] [=============59%            ] num_bits_24.nsys-rep[1/1] [=============60%            ] num_bits_24.nsys-rep[1/1] [==============61%           ] num_bits_24.nsys-rep[1/1] [==============62%           ] num_bits_24.nsys-rep[1/1] [==============63%           ] num_bits_24.nsys-rep[1/1] [==============64%           ] num_bits_24.nsys-rep[1/1] [===============65%          ] num_bits_24.nsys-rep[1/1] [===============66%          ] num_bits_24.nsys-rep[1/1] [===============67%          ] num_bits_24.nsys-rep[1/1] [================68%         ] num_bits_24.nsys-rep[1/1] [================69%         ] num_bits_24.nsys-rep[1/1] [================70%         ] num_bits_24.nsys-rep[1/1] [================71%         ] num_bits_24.nsys-rep[1/1] [=================72%        ] num_bits_24.nsys-rep[1/1] [=================73%        ] num_bits_24.nsys-rep[1/1] [=================74%        ] num_bits_24.nsys-rep[1/1] [==================75%       ] num_bits_24.nsys-rep[1/1] [==================76%       ] num_bits_24.nsys-rep[1/1] [==================77%       ] num_bits_24.nsys-rep[1/1] [==================78%       ] num_bits_24.nsys-rep[1/1] [===================79%      ] num_bits_24.nsys-rep[1/1] [===================80%      ] num_bits_24.nsys-rep[1/1] [========================100%] num_bits_24.nsys-rep[1/1] [========================100%] num_bits_24.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_24.nsys-rep
+Finished testing with num_bits=24
+---------------------------------------
+Running finetune_ldm_decoder.py with num_bits=32...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 32, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_32", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 32 bits...
+Key: 11101011010100000101011101001101
+>>> Training...
+{"iteration": 0, "loss": NaN, "loss_w": NaN, "loss_i": 4.811919212341309, "psnr": 15.54269790649414, "bit_acc_avg": 0.40625, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:43  iteration: 0.000000 (0.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: 4.811919 (4.811919)  psnr: 15.542698 (15.542698)  bit_acc_avg: 0.406250 (0.406250)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 1.030541  data: 0.170510  max mem: 10928
+{"iteration": 10, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:18  iteration: 5.000000 (5.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.463068)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.203765  data: 0.015693  max mem: 11337
+{"iteration": 20, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:13  iteration: 10.000000 (10.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.465774)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121021  data: 0.000166  max mem: 11337
+{"iteration": 30, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.466734)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.120991  data: 0.000120  max mem: 11337
+{"iteration": 40, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.467226)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.120994  data: 0.000120  max mem: 11337
+{"iteration": 50, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:06  iteration: 40.000000 (25.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.467525)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.120977  data: 0.000122  max mem: 11337
+{"iteration": 60, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.467725)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.120983  data: 0.000122  max mem: 11337
+{"iteration": 70, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:04  iteration: 60.000000 (35.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.467870)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.120983  data: 0.000121  max mem: 11337
+{"iteration": 80, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.467978)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.120998  data: 0.000120  max mem: 11337
+{"iteration": 90, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.46875, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.468063)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.121019  data: 0.000120  max mem: 11337
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.468125)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.120989  data: 0.000119  max mem: 11337
+Train Total time: 0:00:13 (0.129928 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.468750 (0.468125)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:11  iteration: 0.000000 (0.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 1.127450  data: 0.232599  max mem: 11337
+Eval  [10/63]  eta: 0:00:15  iteration: 5.000000 (5.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 0.295261  data: 0.021310  max mem: 11337
+Eval  [20/63]  eta: 0:00:10  iteration: 10.000000 (10.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 0.212065  data: 0.000169  max mem: 11337
+Eval  [30/63]  eta: 0:00:07  iteration: 20.000000 (15.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 0.212086  data: 0.000152  max mem: 11337
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 0.212024  data: 0.000154  max mem: 11337
+Eval  [50/63]  eta: 0:00:02  iteration: 40.000000 (25.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 0.212021  data: 0.000153  max mem: 11337
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 0.212086  data: 0.000141  max mem: 11337
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)  time: 0.207138  data: 0.000138  max mem: 11337
+Eval Total time: 0:00:14 (0.222852 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.468750 (0.468750)  word_acc_none: 0.000000 (0.000000)
+
+
+real 254.17
+user 1806.67
+sys 147.48
+Generating '/tmp/nsys-report-b5e2.qdstrm'
+[1/1] [0%                          ] num_bits_32.nsys-rep[1/1] [0%                          ] num_bits_32.nsys-rep[1/1] [5%                          ] num_bits_32.nsys-rep[1/1] [6%                          ] num_bits_32.nsys-rep[1/1] [7%                          ] num_bits_32.nsys-rep[1/1] [8%                          ] num_bits_32.nsys-rep[1/1] [9%                          ] num_bits_32.nsys-rep[1/1] [10%                         ] num_bits_32.nsys-rep[1/1] [11%                         ] num_bits_32.nsys-rep[1/1] [12%                         ] num_bits_32.nsys-rep[1/1] [13%                         ] num_bits_32.nsys-rep[1/1] [14%                         ] num_bits_32.nsys-rep[1/1] [=15%                        ] num_bits_32.nsys-rep[1/1] [=16%                        ] num_bits_32.nsys-rep[1/1] [=17%                        ] num_bits_32.nsys-rep[1/1] [==18%                       ] num_bits_32.nsys-rep[1/1] [==19%                       ] num_bits_32.nsys-rep[1/1] [==20%                       ] num_bits_32.nsys-rep[1/1] [==21%                       ] num_bits_32.nsys-rep[1/1] [===22%                      ] num_bits_32.nsys-rep[1/1] [===23%                      ] num_bits_32.nsys-rep[1/1] [===24%                      ] num_bits_32.nsys-rep[1/1] [====25%                     ] num_bits_32.nsys-rep[1/1] [====26%                     ] num_bits_32.nsys-rep[1/1] [====27%                     ] num_bits_32.nsys-rep[1/1] [====28%                     ] num_bits_32.nsys-rep[1/1] [=====29%                    ] num_bits_32.nsys-rep[1/1] [=====30%                    ] num_bits_32.nsys-rep[1/1] [=====31%                    ] num_bits_32.nsys-rep[1/1] [=====32%                    ] num_bits_32.nsys-rep[1/1] [======33%                   ] num_bits_32.nsys-rep[1/1] [======34%                   ] num_bits_32.nsys-rep[1/1] [======35%                   ] num_bits_32.nsys-rep[1/1] [=======36%                  ] num_bits_32.nsys-rep[1/1] [=======37%                  ] num_bits_32.nsys-rep[1/1] [=======38%                  ] num_bits_32.nsys-rep[1/1] [=======39%                  ] num_bits_32.nsys-rep[1/1] [========40%                 ] num_bits_32.nsys-rep[1/1] [========41%                 ] num_bits_32.nsys-rep[1/1] [========42%                 ] num_bits_32.nsys-rep[1/1] [=========43%                ] num_bits_32.nsys-rep[1/1] [=========44%                ] num_bits_32.nsys-rep[1/1] [=========45%                ] num_bits_32.nsys-rep[1/1] [=========46%                ] num_bits_32.nsys-rep[1/1] [==========47%               ] num_bits_32.nsys-rep[1/1] [==========48%               ] num_bits_32.nsys-rep[1/1] [==========49%               ] num_bits_32.nsys-rep[1/1] [===========50%              ] num_bits_32.nsys-rep[1/1] [===========51%              ] num_bits_32.nsys-rep[1/1] [===========52%              ] num_bits_32.nsys-rep[1/1] [===========53%              ] num_bits_32.nsys-rep[1/1] [============54%             ] num_bits_32.nsys-rep[1/1] [============55%             ] num_bits_32.nsys-rep[1/1] [============56%             ] num_bits_32.nsys-rep[1/1] [============57%             ] num_bits_32.nsys-rep[1/1] [=============58%            ] num_bits_32.nsys-rep[1/1] [=============59%            ] num_bits_32.nsys-rep[1/1] [=============60%            ] num_bits_32.nsys-rep[1/1] [==============61%           ] num_bits_32.nsys-rep[1/1] [==============62%           ] num_bits_32.nsys-rep[1/1] [==============63%           ] num_bits_32.nsys-rep[1/1] [==============64%           ] num_bits_32.nsys-rep[1/1] [===============65%          ] num_bits_32.nsys-rep[1/1] [===============66%          ] num_bits_32.nsys-rep[1/1] [===============67%          ] num_bits_32.nsys-rep[1/1] [================68%         ] num_bits_32.nsys-rep[1/1] [================69%         ] num_bits_32.nsys-rep[1/1] [================70%         ] num_bits_32.nsys-rep[1/1] [================71%         ] num_bits_32.nsys-rep[1/1] [=================72%        ] num_bits_32.nsys-rep[1/1] [=================73%        ] num_bits_32.nsys-rep[1/1] [=================74%        ] num_bits_32.nsys-rep[1/1] [==================75%       ] num_bits_32.nsys-rep[1/1] [==================76%       ] num_bits_32.nsys-rep[1/1] [==================77%       ] num_bits_32.nsys-rep[1/1] [==================78%       ] num_bits_32.nsys-rep[1/1] [===================79%      ] num_bits_32.nsys-rep[1/1] [===================80%      ] num_bits_32.nsys-rep[1/1] [========================100%] num_bits_32.nsys-rep[1/1] [========================100%] num_bits_32.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_32.nsys-rep
+Finished testing with num_bits=32
+---------------------------------------
+Running finetune_ldm_decoder.py with num_bits=40...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 40, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_40", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 40 bits...
+Key: 1110101101010000010101110100110101000100
+>>> Training...
+{"iteration": 0, "loss": NaN, "loss_w": NaN, "loss_i": 5.464245796203613, "psnr": 15.46412467956543, "bit_acc_avg": 0.5187500715255737, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:37  iteration: 0.000000 (0.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: 5.464246 (5.464246)  psnr: 15.464125 (15.464125)  bit_acc_avg: 0.518750 (0.518750)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 0.976228  data: 0.151883  max mem: 10944
+{"iteration": 10, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:17  iteration: 5.000000 (5.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524432)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.198984  data: 0.013935  max mem: 11353
+{"iteration": 20, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:12  iteration: 10.000000 (10.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524702)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121234  data: 0.000136  max mem: 11353
+{"iteration": 30, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524798)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.121237  data: 0.000129  max mem: 11353
+{"iteration": 40, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524848)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.121217  data: 0.000123  max mem: 11353
+{"iteration": 50, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:06  iteration: 40.000000 (25.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524877)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.121188  data: 0.000121  max mem: 11353
+{"iteration": 60, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524898)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.121191  data: 0.000124  max mem: 11353
+{"iteration": 70, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:03  iteration: 60.000000 (35.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524912)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.121191  data: 0.000125  max mem: 11353
+{"iteration": 80, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524923)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.121218  data: 0.000126  max mem: 11353
+{"iteration": 90, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5250000357627869, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524931)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.121232  data: 0.000128  max mem: 11353
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524938)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.121185  data: 0.000124  max mem: 11353
+Train Total time: 0:00:13 (0.128963 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.525000 (0.524938)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:12  iteration: 0.000000 (0.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 1.149541  data: 0.236009  max mem: 11353
+Eval  [10/63]  eta: 0:00:15  iteration: 5.000000 (5.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 0.298283  data: 0.021605  max mem: 11353
+Eval  [20/63]  eta: 0:00:11  iteration: 10.000000 (10.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 0.213063  data: 0.000162  max mem: 11353
+Eval  [30/63]  eta: 0:00:08  iteration: 20.000000 (15.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 0.213026  data: 0.000157  max mem: 11353
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 0.213071  data: 0.000156  max mem: 11353
+Eval  [50/63]  eta: 0:00:03  iteration: 40.000000 (25.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 0.213007  data: 0.000157  max mem: 11353
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 0.212992  data: 0.000152  max mem: 11353
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)  time: 0.208020  data: 0.000151  max mem: 11353
+Eval Total time: 0:00:14 (0.224467 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.525000 (0.525000)  word_acc_none: 0.000000 (0.000000)
+
+
+real 253.39
+user 1764.86
+sys 145.79
+Generating '/tmp/nsys-report-cb0f.qdstrm'
+[1/1] [0%                          ] num_bits_40.nsys-rep[1/1] [0%                          ] num_bits_40.nsys-rep[1/1] [6%                          ] num_bits_40.nsys-rep[1/1] [12%                         ] num_bits_40.nsys-rep[1/1] [10%                         ] num_bits_40.nsys-rep[1/1] [8%                          ] num_bits_40.nsys-rep[1/1] [7%                          ] num_bits_40.nsys-rep[1/1] [6%                          ] num_bits_40.nsys-rep[1/1] [5%                          ] num_bits_40.nsys-rep[1/1] [5%                          ] num_bits_40.nsys-rep[1/1] [6%                          ] num_bits_40.nsys-rep[1/1] [7%                          ] num_bits_40.nsys-rep[1/1] [6%                          ] num_bits_40.nsys-rep[1/1] [7%                          ] num_bits_40.nsys-rep[1/1] [6%                          ] num_bits_40.nsys-rep[1/1] [9%                          ] num_bits_40.nsys-rep[1/1] [8%                          ] num_bits_40.nsys-rep[1/1] [7%                          ] num_bits_40.nsys-rep[1/1] [9%                          ] num_bits_40.nsys-rep[1/1] [8%                          ] num_bits_40.nsys-rep[1/1] [10%                         ] num_bits_40.nsys-rep[1/1] [9%                          ] num_bits_40.nsys-rep[1/1] [8%                          ] num_bits_40.nsys-rep[1/1] [10%                         ] num_bits_40.nsys-rep[1/1] [9%                          ] num_bits_40.nsys-rep[1/1] [11%                         ] num_bits_40.nsys-rep[1/1] [10%                         ] num_bits_40.nsys-rep[1/1] [12%                         ] num_bits_40.nsys-rep[1/1] [11%                         ] num_bits_40.nsys-rep[1/1] [13%                         ] num_bits_40.nsys-rep[1/1] [12%                         ] num_bits_40.nsys-rep[1/1] [14%                         ] num_bits_40.nsys-rep[1/1] [13%                         ] num_bits_40.nsys-rep[1/1] [14%                         ] num_bits_40.nsys-rep[1/1] [13%                         ] num_bits_40.nsys-rep[1/1] [=15%                        ] num_bits_40.nsys-rep[1/1] [14%                         ] num_bits_40.nsys-rep[1/1] [=15%                        ] num_bits_40.nsys-rep[1/1] [14%                         ] num_bits_40.nsys-rep[1/1] [=16%                        ] num_bits_40.nsys-rep[1/1] [=15%                        ] num_bits_40.nsys-rep[1/1] [=16%                        ] num_bits_40.nsys-rep[1/1] [=15%                        ] num_bits_40.nsys-rep[1/1] [=16%                        ] num_bits_40.nsys-rep[1/1] [=17%                        ] num_bits_40.nsys-rep[1/1] [=16%                        ] num_bits_40.nsys-rep[1/1] [=17%                        ] num_bits_40.nsys-rep[1/1] [=16%                        ] num_bits_40.nsys-rep[1/1] [=17%                        ] num_bits_40.nsys-rep[1/1] [==18%                       ] num_bits_40.nsys-rep[1/1] [=17%                        ] num_bits_40.nsys-rep[1/1] [==18%                       ] num_bits_40.nsys-rep[1/1] [=17%                        ] num_bits_40.nsys-rep[1/1] [==18%                       ] num_bits_40.nsys-rep[1/1] [=17%                        ] num_bits_40.nsys-rep[1/1] [==18%                       ] num_bits_40.nsys-rep[1/1] [==19%                       ] num_bits_40.nsys-rep[1/1] [==18%                       ] num_bits_40.nsys-rep[1/1] [==19%                       ] num_bits_40.nsys-rep[1/1] [==18%                       ] num_bits_40.nsys-rep[1/1] [==19%                       ] num_bits_40.nsys-rep[1/1] [==18%                       ] num_bits_40.nsys-rep[1/1] [==19%                       ] num_bits_40.nsys-rep[1/1] [==20%                       ] num_bits_40.nsys-rep[1/1] [==21%                       ] num_bits_40.nsys-rep[1/1] [===22%                      ] num_bits_40.nsys-rep[1/1] [===23%                      ] num_bits_40.nsys-rep[1/1] [===24%                      ] num_bits_40.nsys-rep[1/1] [====25%                     ] num_bits_40.nsys-rep[1/1] [====26%                     ] num_bits_40.nsys-rep[1/1] [====27%                     ] num_bits_40.nsys-rep[1/1] [====28%                     ] num_bits_40.nsys-rep[1/1] [=====29%                    ] num_bits_40.nsys-rep[1/1] [=====30%                    ] num_bits_40.nsys-rep[1/1] [=====31%                    ] num_bits_40.nsys-rep[1/1] [=====32%                    ] num_bits_40.nsys-rep[1/1] [======33%                   ] num_bits_40.nsys-rep[1/1] [======34%                   ] num_bits_40.nsys-rep[1/1] [======35%                   ] num_bits_40.nsys-rep[1/1] [=======36%                  ] num_bits_40.nsys-rep[1/1] [=======37%                  ] num_bits_40.nsys-rep[1/1] [=======38%                  ] num_bits_40.nsys-rep[1/1] [=======39%                  ] num_bits_40.nsys-rep[1/1] [========40%                 ] num_bits_40.nsys-rep[1/1] [========41%                 ] num_bits_40.nsys-rep[1/1] [========42%                 ] num_bits_40.nsys-rep[1/1] [=========43%                ] num_bits_40.nsys-rep[1/1] [=========44%                ] num_bits_40.nsys-rep[1/1] [=========45%                ] num_bits_40.nsys-rep[1/1] [=========46%                ] num_bits_40.nsys-rep[1/1] [==========47%               ] num_bits_40.nsys-rep[1/1] [==========48%               ] num_bits_40.nsys-rep[1/1] [==========49%               ] num_bits_40.nsys-rep[1/1] [===========50%              ] num_bits_40.nsys-rep[1/1] [===========51%              ] num_bits_40.nsys-rep[1/1] [===========52%              ] num_bits_40.nsys-rep[1/1] [===========53%              ] num_bits_40.nsys-rep[1/1] [============54%             ] num_bits_40.nsys-rep[1/1] [============55%             ] num_bits_40.nsys-rep[1/1] [============56%             ] num_bits_40.nsys-rep[1/1] [============57%             ] num_bits_40.nsys-rep[1/1] [=============58%            ] num_bits_40.nsys-rep[1/1] [=============59%            ] num_bits_40.nsys-rep[1/1] [=============60%            ] num_bits_40.nsys-rep[1/1] [==============61%           ] num_bits_40.nsys-rep[1/1] [==============62%           ] num_bits_40.nsys-rep[1/1] [==============63%           ] num_bits_40.nsys-rep[1/1] [==============64%           ] num_bits_40.nsys-rep[1/1] [===============65%          ] num_bits_40.nsys-rep[1/1] [===============66%          ] num_bits_40.nsys-rep[1/1] [===============67%          ] num_bits_40.nsys-rep[1/1] [================68%         ] num_bits_40.nsys-rep[1/1] [================69%         ] num_bits_40.nsys-rep[1/1] [================70%         ] num_bits_40.nsys-rep[1/1] [================71%         ] num_bits_40.nsys-rep[1/1] [=================72%        ] num_bits_40.nsys-rep[1/1] [=================73%        ] num_bits_40.nsys-rep[1/1] [=================74%        ] num_bits_40.nsys-rep[1/1] [==================75%       ] num_bits_40.nsys-rep[1/1] [==================76%       ] num_bits_40.nsys-rep[1/1] [==================77%       ] num_bits_40.nsys-rep[1/1] [==================78%       ] num_bits_40.nsys-rep[1/1] [===================79%      ] num_bits_40.nsys-rep[1/1] [===================80%      ] num_bits_40.nsys-rep[1/1] [========================100%] num_bits_40.nsys-rep[1/1] [========================100%] num_bits_40.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_40.nsys-rep
+Finished testing with num_bits=40
+---------------------------------------
+Running finetune_ldm_decoder.py with num_bits=48...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 48, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_48", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 48 bits...
+Key: 111010110101000001010111010011010100010000100111
+>>> Training...
+{"iteration": 0, "loss": NaN, "loss_w": NaN, "loss_i": 4.683912754058838, "psnr": 14.979937553405762, "bit_acc_avg": 0.5052083730697632, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:51  iteration: 0.000000 (0.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: 4.683913 (4.683913)  psnr: 14.979938 (14.979938)  bit_acc_avg: 0.505208 (0.505208)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 1.110028  data: 0.200515  max mem: 10960
+{"iteration": 10, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:19  iteration: 5.000000 (5.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.519413)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.211226  data: 0.018365  max mem: 11369
+{"iteration": 20, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:13  iteration: 10.000000 (10.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520089)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121310  data: 0.000150  max mem: 11369
+{"iteration": 30, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520329)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.121315  data: 0.000137  max mem: 11369
+{"iteration": 40, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520452)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.121311  data: 0.000125  max mem: 11369
+{"iteration": 50, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:07  iteration: 40.000000 (25.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520527)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.121316  data: 0.000126  max mem: 11369
+{"iteration": 60, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520577)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.121310  data: 0.000125  max mem: 11369
+{"iteration": 70, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:04  iteration: 60.000000 (35.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520613)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.121279  data: 0.000123  max mem: 11369
+{"iteration": 80, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520640)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.121307  data: 0.000124  max mem: 11369
+{"iteration": 90, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5208333730697632, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520662)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.121315  data: 0.000126  max mem: 11369
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520677)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.121279  data: 0.000125  max mem: 11369
+Train Total time: 0:00:13 (0.131771 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.520833 (0.520677)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:15  iteration: 0.000000 (0.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 1.206270  data: 0.271444  max mem: 11369
+Eval  [10/63]  eta: 0:00:16  iteration: 5.000000 (5.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 0.303717  data: 0.024845  max mem: 11369
+Eval  [20/63]  eta: 0:00:11  iteration: 10.000000 (10.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 0.213366  data: 0.000175  max mem: 11369
+Eval  [30/63]  eta: 0:00:08  iteration: 20.000000 (15.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 0.213289  data: 0.000166  max mem: 11369
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 0.213266  data: 0.000162  max mem: 11369
+Eval  [50/63]  eta: 0:00:03  iteration: 40.000000 (25.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 0.213263  data: 0.000161  max mem: 11369
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 0.213293  data: 0.000157  max mem: 11369
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)  time: 0.208321  data: 0.000156  max mem: 11369
+Eval Total time: 0:00:14 (0.225551 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.520833 (0.520833)  word_acc_none: 0.000000 (0.000000)
+
+
+real 254.24
+user 1803.44
+sys 149.10
+Generating '/tmp/nsys-report-7fb6.qdstrm'
+[1/1] [0%                          ] num_bits_48.nsys-rep[1/1] [0%                          ] num_bits_48.nsys-rep[1/1] [8%                          ] num_bits_48.nsys-rep[1/1] [=17%                        ] num_bits_48.nsys-rep[1/1] [13%                         ] num_bits_48.nsys-rep[1/1] [10%                         ] num_bits_48.nsys-rep[1/1] [9%                          ] num_bits_48.nsys-rep[1/1] [7%                          ] num_bits_48.nsys-rep[1/1] [6%                          ] num_bits_48.nsys-rep[1/1] [5%                          ] num_bits_48.nsys-rep[1/1] [5%                          ] num_bits_48.nsys-rep[1/1] [6%                          ] num_bits_48.nsys-rep[1/1] [5%                          ] num_bits_48.nsys-rep[1/1] [6%                          ] num_bits_48.nsys-rep[1/1] [7%                          ] num_bits_48.nsys-rep[1/1] [6%                          ] num_bits_48.nsys-rep[1/1] [7%                          ] num_bits_48.nsys-rep[1/1] [6%                          ] num_bits_48.nsys-rep[1/1] [7%                          ] num_bits_48.nsys-rep[1/1] [6%                          ] num_bits_48.nsys-rep[1/1] [10%                         ] num_bits_48.nsys-rep[1/1] [9%                          ] num_bits_48.nsys-rep[1/1] [8%                          ] num_bits_48.nsys-rep[1/1] [7%                          ] num_bits_48.nsys-rep[1/1] [10%                         ] num_bits_48.nsys-rep[1/1] [9%                          ] num_bits_48.nsys-rep[1/1] [8%                          ] num_bits_48.nsys-rep[1/1] [10%                         ] num_bits_48.nsys-rep[1/1] [9%                          ] num_bits_48.nsys-rep[1/1] [11%                         ] num_bits_48.nsys-rep[1/1] [10%                         ] num_bits_48.nsys-rep[1/1] [12%                         ] num_bits_48.nsys-rep[1/1] [11%                         ] num_bits_48.nsys-rep[1/1] [13%                         ] num_bits_48.nsys-rep[1/1] [12%                         ] num_bits_48.nsys-rep[1/1] [14%                         ] num_bits_48.nsys-rep[1/1] [13%                         ] num_bits_48.nsys-rep[1/1] [=15%                        ] num_bits_48.nsys-rep[1/1] [14%                         ] num_bits_48.nsys-rep[1/1] [=15%                        ] num_bits_48.nsys-rep[1/1] [14%                         ] num_bits_48.nsys-rep[1/1] [=16%                        ] num_bits_48.nsys-rep[1/1] [=15%                        ] num_bits_48.nsys-rep[1/1] [=16%                        ] num_bits_48.nsys-rep[1/1] [=15%                        ] num_bits_48.nsys-rep[1/1] [=16%                        ] num_bits_48.nsys-rep[1/1] [=17%                        ] num_bits_48.nsys-rep[1/1] [=16%                        ] num_bits_48.nsys-rep[1/1] [=17%                        ] num_bits_48.nsys-rep[1/1] [=16%                        ] num_bits_48.nsys-rep[1/1] [==18%                       ] num_bits_48.nsys-rep[1/1] [=17%                        ] num_bits_48.nsys-rep[1/1] [==18%                       ] num_bits_48.nsys-rep[1/1] [=17%                        ] num_bits_48.nsys-rep[1/1] [==18%                       ] num_bits_48.nsys-rep[1/1] [=17%                        ] num_bits_48.nsys-rep[1/1] [==18%                       ] num_bits_48.nsys-rep[1/1] [==19%                       ] num_bits_48.nsys-rep[1/1] [==18%                       ] num_bits_48.nsys-rep[1/1] [==19%                       ] num_bits_48.nsys-rep[1/1] [==18%                       ] num_bits_48.nsys-rep[1/1] [==19%                       ] num_bits_48.nsys-rep[1/1] [==18%                       ] num_bits_48.nsys-rep[1/1] [==19%                       ] num_bits_48.nsys-rep[1/1] [==20%                       ] num_bits_48.nsys-rep[1/1] [==19%                       ] num_bits_48.nsys-rep[1/1] [==20%                       ] num_bits_48.nsys-rep[1/1] [==19%                       ] num_bits_48.nsys-rep[1/1] [==20%                       ] num_bits_48.nsys-rep[1/1] [==21%                       ] num_bits_48.nsys-rep[1/1] [===22%                      ] num_bits_48.nsys-rep[1/1] [===23%                      ] num_bits_48.nsys-rep[1/1] [===24%                      ] num_bits_48.nsys-rep[1/1] [====25%                     ] num_bits_48.nsys-rep[1/1] [====26%                     ] num_bits_48.nsys-rep[1/1] [====27%                     ] num_bits_48.nsys-rep[1/1] [====28%                     ] num_bits_48.nsys-rep[1/1] [=====29%                    ] num_bits_48.nsys-rep[1/1] [=====30%                    ] num_bits_48.nsys-rep[1/1] [=====31%                    ] num_bits_48.nsys-rep[1/1] [=====32%                    ] num_bits_48.nsys-rep[1/1] [======33%                   ] num_bits_48.nsys-rep[1/1] [======34%                   ] num_bits_48.nsys-rep[1/1] [======35%                   ] num_bits_48.nsys-rep[1/1] [=======36%                  ] num_bits_48.nsys-rep[1/1] [=======37%                  ] num_bits_48.nsys-rep[1/1] [=======38%                  ] num_bits_48.nsys-rep[1/1] [=======39%                  ] num_bits_48.nsys-rep[1/1] [========40%                 ] num_bits_48.nsys-rep[1/1] [========41%                 ] num_bits_48.nsys-rep[1/1] [========42%                 ] num_bits_48.nsys-rep[1/1] [=========43%                ] num_bits_48.nsys-rep[1/1] [=========44%                ] num_bits_48.nsys-rep[1/1] [=========45%                ] num_bits_48.nsys-rep[1/1] [=========46%                ] num_bits_48.nsys-rep[1/1] [==========47%               ] num_bits_48.nsys-rep[1/1] [==========48%               ] num_bits_48.nsys-rep[1/1] [==========49%               ] num_bits_48.nsys-rep[1/1] [===========50%              ] num_bits_48.nsys-rep[1/1] [===========51%              ] num_bits_48.nsys-rep[1/1] [===========52%              ] num_bits_48.nsys-rep[1/1] [===========53%              ] num_bits_48.nsys-rep[1/1] [============54%             ] num_bits_48.nsys-rep[1/1] [============55%             ] num_bits_48.nsys-rep[1/1] [============56%             ] num_bits_48.nsys-rep[1/1] [============57%             ] num_bits_48.nsys-rep[1/1] [=============58%            ] num_bits_48.nsys-rep[1/1] [=============59%            ] num_bits_48.nsys-rep[1/1] [=============60%            ] num_bits_48.nsys-rep[1/1] [==============61%           ] num_bits_48.nsys-rep[1/1] [==============62%           ] num_bits_48.nsys-rep[1/1] [==============63%           ] num_bits_48.nsys-rep[1/1] [==============64%           ] num_bits_48.nsys-rep[1/1] [===============65%          ] num_bits_48.nsys-rep[1/1] [===============66%          ] num_bits_48.nsys-rep[1/1] [===============67%          ] num_bits_48.nsys-rep[1/1] [================68%         ] num_bits_48.nsys-rep[1/1] [================69%         ] num_bits_48.nsys-rep[1/1] [================70%         ] num_bits_48.nsys-rep[1/1] [================71%         ] num_bits_48.nsys-rep[1/1] [=================72%        ] num_bits_48.nsys-rep[1/1] [=================73%        ] num_bits_48.nsys-rep[1/1] [=================74%        ] num_bits_48.nsys-rep[1/1] [==================75%       ] num_bits_48.nsys-rep[1/1] [==================76%       ] num_bits_48.nsys-rep[1/1] [==================77%       ] num_bits_48.nsys-rep[1/1] [==================78%       ] num_bits_48.nsys-rep[1/1] [===================79%      ] num_bits_48.nsys-rep[1/1] [===================80%      ] num_bits_48.nsys-rep[1/1] [========================100%] num_bits_48.nsys-rep[1/1] [========================100%] num_bits_48.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_48.nsys-rep
+Finished testing with num_bits=48
+---------------------------------------
+Running finetune_ldm_decoder.py with num_bits=56...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 56, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_56", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 56 bits...
+Key: 11101011010100000101011101001101010001000010011101111100
+>>> Training...
+{"iteration": 0, "loss": NaN, "loss_w": NaN, "loss_i": 5.10502290725708, "psnr": 14.469371795654297, "bit_acc_avg": 0.4776785969734192, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:42  iteration: 0.000000 (0.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: 5.105023 (5.105023)  psnr: 14.469372 (14.469372)  bit_acc_avg: 0.477679 (0.477679)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 1.022650  data: 0.166081  max mem: 10976
+{"iteration": 10, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:18  iteration: 5.000000 (5.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.497971)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.203315  data: 0.015221  max mem: 11385
+{"iteration": 20, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:13  iteration: 10.000000 (10.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.498937)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121365  data: 0.000135  max mem: 11385
+{"iteration": 30, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499280)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.121343  data: 0.000130  max mem: 11385
+{"iteration": 40, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499456)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.121321  data: 0.000125  max mem: 11385
+{"iteration": 50, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:06  iteration: 40.000000 (25.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499562)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.121325  data: 0.000125  max mem: 11385
+{"iteration": 60, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499634)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.121337  data: 0.000124  max mem: 11385
+{"iteration": 70, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:04  iteration: 60.000000 (35.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499686)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.121345  data: 0.000126  max mem: 11385
+{"iteration": 80, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499724)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.121355  data: 0.000127  max mem: 11385
+{"iteration": 90, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.5, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499755)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.121341  data: 0.000127  max mem: 11385
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499777)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.121311  data: 0.000124  max mem: 11385
+Train Total time: 0:00:13 (0.130122 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.500000 (0.499777)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:12  iteration: 0.000000 (0.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 1.152158  data: 0.241750  max mem: 11385
+Eval  [10/63]  eta: 0:00:15  iteration: 5.000000 (5.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 0.298932  data: 0.022137  max mem: 11385
+Eval  [20/63]  eta: 0:00:11  iteration: 10.000000 (10.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 0.213548  data: 0.000171  max mem: 11385
+Eval  [30/63]  eta: 0:00:08  iteration: 20.000000 (15.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 0.213498  data: 0.000161  max mem: 11385
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 0.213463  data: 0.000151  max mem: 11385
+Eval  [50/63]  eta: 0:00:03  iteration: 40.000000 (25.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 0.213429  data: 0.000152  max mem: 11385
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 0.213423  data: 0.000152  max mem: 11385
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)  time: 0.208444  data: 0.000149  max mem: 11385
+Eval Total time: 0:00:14 (0.224841 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.500000 (0.500000)  word_acc_none: 0.000000 (0.000000)
+
+
+real 253.54
+user 1778.78
+sys 141.64
+Generating '/tmp/nsys-report-6863.qdstrm'
+[1/1] [0%                          ] num_bits_56.nsys-rep[1/1] [0%                          ] num_bits_56.nsys-rep[1/1] [8%                          ] num_bits_56.nsys-rep[1/1] [=16%                        ] num_bits_56.nsys-rep[1/1] [12%                         ] num_bits_56.nsys-rep[1/1] [10%                         ] num_bits_56.nsys-rep[1/1] [8%                          ] num_bits_56.nsys-rep[1/1] [7%                          ] num_bits_56.nsys-rep[1/1] [6%                          ] num_bits_56.nsys-rep[1/1] [5%                          ] num_bits_56.nsys-rep[1/1] [5%                          ] num_bits_56.nsys-rep[1/1] [5%                          ] num_bits_56.nsys-rep[1/1] [6%                          ] num_bits_56.nsys-rep[1/1] [5%                          ] num_bits_56.nsys-rep[1/1] [6%                          ] num_bits_56.nsys-rep[1/1] [7%                          ] num_bits_56.nsys-rep[1/1] [6%                          ] num_bits_56.nsys-rep[1/1] [7%                          ] num_bits_56.nsys-rep[1/1] [6%                          ] num_bits_56.nsys-rep[1/1] [5%                          ] num_bits_56.nsys-rep[1/1] [9%                          ] num_bits_56.nsys-rep[1/1] [8%                          ] num_bits_56.nsys-rep[1/1] [7%                          ] num_bits_56.nsys-rep[1/1] [9%                          ] num_bits_56.nsys-rep[1/1] [8%                          ] num_bits_56.nsys-rep[1/1] [10%                         ] num_bits_56.nsys-rep[1/1] [9%                          ] num_bits_56.nsys-rep[1/1] [11%                         ] num_bits_56.nsys-rep[1/1] [10%                         ] num_bits_56.nsys-rep[1/1] [12%                         ] num_bits_56.nsys-rep[1/1] [11%                         ] num_bits_56.nsys-rep[1/1] [13%                         ] num_bits_56.nsys-rep[1/1] [12%                         ] num_bits_56.nsys-rep[1/1] [14%                         ] num_bits_56.nsys-rep[1/1] [13%                         ] num_bits_56.nsys-rep[1/1] [14%                         ] num_bits_56.nsys-rep[1/1] [13%                         ] num_bits_56.nsys-rep[1/1] [=15%                        ] num_bits_56.nsys-rep[1/1] [14%                         ] num_bits_56.nsys-rep[1/1] [=15%                        ] num_bits_56.nsys-rep[1/1] [=16%                        ] num_bits_56.nsys-rep[1/1] [=15%                        ] num_bits_56.nsys-rep[1/1] [=16%                        ] num_bits_56.nsys-rep[1/1] [=15%                        ] num_bits_56.nsys-rep[1/1] [=16%                        ] num_bits_56.nsys-rep[1/1] [=17%                        ] num_bits_56.nsys-rep[1/1] [=16%                        ] num_bits_56.nsys-rep[1/1] [=17%                        ] num_bits_56.nsys-rep[1/1] [=16%                        ] num_bits_56.nsys-rep[1/1] [=17%                        ] num_bits_56.nsys-rep[1/1] [==18%                       ] num_bits_56.nsys-rep[1/1] [=17%                        ] num_bits_56.nsys-rep[1/1] [==18%                       ] num_bits_56.nsys-rep[1/1] [=17%                        ] num_bits_56.nsys-rep[1/1] [==18%                       ] num_bits_56.nsys-rep[1/1] [==19%                       ] num_bits_56.nsys-rep[1/1] [==18%                       ] num_bits_56.nsys-rep[1/1] [==19%                       ] num_bits_56.nsys-rep[1/1] [==18%                       ] num_bits_56.nsys-rep[1/1] [==19%                       ] num_bits_56.nsys-rep[1/1] [==18%                       ] num_bits_56.nsys-rep[1/1] [==19%                       ] num_bits_56.nsys-rep[1/1] [==20%                       ] num_bits_56.nsys-rep[1/1] [==21%                       ] num_bits_56.nsys-rep[1/1] [===22%                      ] num_bits_56.nsys-rep[1/1] [===23%                      ] num_bits_56.nsys-rep[1/1] [===24%                      ] num_bits_56.nsys-rep[1/1] [====25%                     ] num_bits_56.nsys-rep[1/1] [====26%                     ] num_bits_56.nsys-rep[1/1] [====27%                     ] num_bits_56.nsys-rep[1/1] [====28%                     ] num_bits_56.nsys-rep[1/1] [=====29%                    ] num_bits_56.nsys-rep[1/1] [=====30%                    ] num_bits_56.nsys-rep[1/1] [=====31%                    ] num_bits_56.nsys-rep[1/1] [=====32%                    ] num_bits_56.nsys-rep[1/1] [======33%                   ] num_bits_56.nsys-rep[1/1] [======34%                   ] num_bits_56.nsys-rep[1/1] [======35%                   ] num_bits_56.nsys-rep[1/1] [=======36%                  ] num_bits_56.nsys-rep[1/1] [=======37%                  ] num_bits_56.nsys-rep[1/1] [=======38%                  ] num_bits_56.nsys-rep[1/1] [=======39%                  ] num_bits_56.nsys-rep[1/1] [========40%                 ] num_bits_56.nsys-rep[1/1] [========41%                 ] num_bits_56.nsys-rep[1/1] [========42%                 ] num_bits_56.nsys-rep[1/1] [=========43%                ] num_bits_56.nsys-rep[1/1] [=========44%                ] num_bits_56.nsys-rep[1/1] [=========45%                ] num_bits_56.nsys-rep[1/1] [=========46%                ] num_bits_56.nsys-rep[1/1] [==========47%               ] num_bits_56.nsys-rep[1/1] [==========48%               ] num_bits_56.nsys-rep[1/1] [==========49%               ] num_bits_56.nsys-rep[1/1] [===========50%              ] num_bits_56.nsys-rep[1/1] [===========51%              ] num_bits_56.nsys-rep[1/1] [===========52%              ] num_bits_56.nsys-rep[1/1] [===========53%              ] num_bits_56.nsys-rep[1/1] [============54%             ] num_bits_56.nsys-rep[1/1] [============55%             ] num_bits_56.nsys-rep[1/1] [============56%             ] num_bits_56.nsys-rep[1/1] [============57%             ] num_bits_56.nsys-rep[1/1] [=============58%            ] num_bits_56.nsys-rep[1/1] [=============59%            ] num_bits_56.nsys-rep[1/1] [=============60%            ] num_bits_56.nsys-rep[1/1] [==============61%           ] num_bits_56.nsys-rep[1/1] [==============62%           ] num_bits_56.nsys-rep[1/1] [==============63%           ] num_bits_56.nsys-rep[1/1] [==============64%           ] num_bits_56.nsys-rep[1/1] [===============65%          ] num_bits_56.nsys-rep[1/1] [===============66%          ] num_bits_56.nsys-rep[1/1] [===============67%          ] num_bits_56.nsys-rep[1/1] [================68%         ] num_bits_56.nsys-rep[1/1] [================69%         ] num_bits_56.nsys-rep[1/1] [================70%         ] num_bits_56.nsys-rep[1/1] [================71%         ] num_bits_56.nsys-rep[1/1] [=================72%        ] num_bits_56.nsys-rep[1/1] [=================73%        ] num_bits_56.nsys-rep[1/1] [=================74%        ] num_bits_56.nsys-rep[1/1] [==================75%       ] num_bits_56.nsys-rep[1/1] [==================76%       ] num_bits_56.nsys-rep[1/1] [==================77%       ] num_bits_56.nsys-rep[1/1] [==================78%       ] num_bits_56.nsys-rep[1/1] [===================79%      ] num_bits_56.nsys-rep[1/1] [===================80%      ] num_bits_56.nsys-rep[1/1] [========================100%] num_bits_56.nsys-rep[1/1] [========================100%] num_bits_56.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_56.nsys-rep
+Finished testing with num_bits=56
+---------------------------------------
+Running finetune_ldm_decoder.py with num_bits=64...
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+__git__:sha: 7c13a7ae7c7f943e219dd3d967403be330fc66bf, status: has uncommited changes, branch: main
+__log__:{"train_dir": "dataset/COCO/train/", "val_dir": "dataset/COCO/val/", "ldm_config": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml", "ldm_ckpt": "sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt", "msg_decoder_path": "None", "num_bits": 64, "use_random_msg_decoder": true, "redundancy": 1, "decoder_depth": 8, "decoder_channels": 64, "batch_size": 4, "img_size": 256, "loss_i": "watson-vgg", "loss_w": "bce", "lambda_i": 0.2, "lambda_w": 1.0, "optimizer": "AdamW,lr=5e-4", "steps": 100, "warmup_steps": 20, "log_freq": 10, "save_img_freq": 1000, "num_keys": 1, "output_dir": "output/num_bits_64", "seed": 0, "debug": false}
+>>> Building LDM model with config sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.yaml and weights from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt...
+Loading model from sd/stable-diffusion-v2-1/v2-1_512-ema-pruned.ckpt
+Global Step: 220000
+LatentDiffusion: Running in eps-prediction mode
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is None and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 1280, context_dim is 1024 and using 20 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is None and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 640, context_dim is 1024 and using 10 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is None and using 5 heads.
+Setting up MemoryEfficientCrossAttention. Query dim is 320, context_dim is 1024 and using 5 heads.
+DiffusionWrapper has 865.91 M params.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla-xformers' with 512 in_channels
+building MemoryEfficientAttnBlock with 512 in_channels...
+>>> Building hidden decoder with weights from None...
+>>> Whitening...
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/scr/dataset/yuke/xinrui/conda_env/signature/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+>>> Creating torchscript at None...
+>>> Loading data from dataset/COCO/train/ and dataset/COCO/val/...
+>>> Creating losses...
+Losses: bce and watson-vgg...
+
+>>> Creating key with 64 bits...
+Key: 1110101101010000010101110100110101000100001001110111110011111111
+>>> Training...
+{"iteration": 0, "loss": NaN, "loss_w": NaN, "loss_i": 4.5858330726623535, "psnr": 15.072546005249023, "bit_acc_avg": 0.48046875, "word_acc_avg": 0.0, "lr": 0.0}
+Train  [  0/100]  eta: 0:01:40  iteration: 0.000000 (0.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: 4.585833 (4.585833)  psnr: 15.072546 (15.072546)  bit_acc_avg: 0.480469 (0.480469)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000000 (0.000000)  time: 1.001508  data: 0.164821  max mem: 10992
+{"iteration": 10, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.00025}
+Train  [ 10/100]  eta: 0:00:18  iteration: 5.000000 (5.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.441406)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000125 (0.000125)  time: 0.201429  data: 0.015131  max mem: 11401
+{"iteration": 20, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.0005}
+Train  [ 20/100]  eta: 0:00:13  iteration: 10.000000 (10.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.439546)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000250 (0.000250)  time: 0.121434  data: 0.000156  max mem: 11401
+{"iteration": 30, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.00048100794336156604}
+Train  [ 30/100]  eta: 0:00:10  iteration: 20.000000 (15.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.438886)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000481 (0.000328)  time: 0.121388  data: 0.000137  max mem: 11401
+{"iteration": 40, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.0004269231419060436}
+Train  [ 40/100]  eta: 0:00:08  iteration: 30.000000 (20.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.438548)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000477 (0.000359)  time: 0.121297  data: 0.000124  max mem: 11401
+{"iteration": 50, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.00034597951637508993}
+Train  [ 50/100]  eta: 0:00:06  iteration: 40.000000 (25.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.438343)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000420 (0.000364)  time: 0.121389  data: 0.000141  max mem: 11401
+{"iteration": 60, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.0002505}
+Train  [ 60/100]  eta: 0:00:05  iteration: 50.000000 (30.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.438204)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000337 (0.000352)  time: 0.121402  data: 0.000142  max mem: 11401
+{"iteration": 70, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 0.0001550204836249101}
+Train  [ 70/100]  eta: 0:00:04  iteration: 60.000000 (35.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.438105)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000241 (0.000331)  time: 0.121315  data: 0.000127  max mem: 11401
+{"iteration": 80, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 7.40768580939564e-05}
+Train  [ 80/100]  eta: 0:00:02  iteration: 70.000000 (40.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.438030)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000146 (0.000303)  time: 0.121326  data: 0.000126  max mem: 11401
+{"iteration": 90, "loss": NaN, "loss_w": NaN, "loss_i": NaN, "psnr": NaN, "bit_acc_avg": 0.4375, "word_acc_avg": 0.0, "lr": 1.9992056638433958e-05}
+Train  [ 90/100]  eta: 0:00:01  iteration: 80.000000 (45.000000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.437972)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000067 (0.000274)  time: 0.121310  data: 0.000125  max mem: 11401
+Train  [ 99/100]  eta: 0:00:00  iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.437930)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)  time: 0.121326  data: 0.000126  max mem: 11401
+Train Total time: 0:00:13 (0.130051 s / it)
+Averaged train stats: iteration: 89.000000 (49.500000)  loss: nan (nan)  loss_w: nan (nan)  loss_i: nan (nan)  psnr: nan (nan)  bit_acc_avg: 0.437500 (0.437930)  word_acc_avg: 0.000000 (0.000000)  lr: 0.000020 (0.000250)
+Eval  [ 0/63]  eta: 0:01:12  iteration: 0.000000 (0.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 1.155235  data: 0.241290  max mem: 11401
+Eval  [10/63]  eta: 0:00:15  iteration: 5.000000 (5.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 0.298735  data: 0.022123  max mem: 11401
+Eval  [20/63]  eta: 0:00:11  iteration: 10.000000 (10.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 0.213038  data: 0.000180  max mem: 11401
+Eval  [30/63]  eta: 0:00:08  iteration: 20.000000 (15.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 0.213016  data: 0.000158  max mem: 11401
+Eval  [40/63]  eta: 0:00:05  iteration: 30.000000 (20.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 0.212997  data: 0.000160  max mem: 11401
+Eval  [50/63]  eta: 0:00:03  iteration: 40.000000 (25.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 0.213005  data: 0.000156  max mem: 11401
+Eval  [60/63]  eta: 0:00:00  iteration: 50.000000 (30.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 0.213050  data: 0.000151  max mem: 11401
+Eval  [62/63]  eta: 0:00:00  iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)  time: 0.208082  data: 0.000150  max mem: 11401
+Eval Total time: 0:00:14 (0.224373 s / it)
+Averaged eval stats: iteration: 52.000000 (31.000000)  psnr: nan (nan)  tpr_none: 0.000000 (0.000000)  fpr_none: 0.000000 (0.000000)  bit_acc_none: 0.437500 (0.437500)  word_acc_none: 0.000000 (0.000000)
+
+
+real 254.22
+user 1841.02
+sys 146.87
+Generating '/tmp/nsys-report-c6cb.qdstrm'
+[1/1] [0%                          ] num_bits_64.nsys-rep[1/1] [0%                          ] num_bits_64.nsys-rep[1/1] [8%                          ] num_bits_64.nsys-rep[1/1] [=16%                        ] num_bits_64.nsys-rep[1/1] [12%                         ] num_bits_64.nsys-rep[1/1] [10%                         ] num_bits_64.nsys-rep[1/1] [8%                          ] num_bits_64.nsys-rep[1/1] [7%                          ] num_bits_64.nsys-rep[1/1] [6%                          ] num_bits_64.nsys-rep[1/1] [5%                          ] num_bits_64.nsys-rep[1/1] [5%                          ] num_bits_64.nsys-rep[1/1] [6%                          ] num_bits_64.nsys-rep[1/1] [5%                          ] num_bits_64.nsys-rep[1/1] [6%                          ] num_bits_64.nsys-rep[1/1] [7%                          ] num_bits_64.nsys-rep[1/1] [6%                          ] num_bits_64.nsys-rep[1/1] [7%                          ] num_bits_64.nsys-rep[1/1] [6%                          ] num_bits_64.nsys-rep[1/1] [10%                         ] num_bits_64.nsys-rep[1/1] [9%                          ] num_bits_64.nsys-rep[1/1] [8%                          ] num_bits_64.nsys-rep[1/1] [7%                          ] num_bits_64.nsys-rep[1/1] [9%                          ] num_bits_64.nsys-rep[1/1] [8%                          ] num_bits_64.nsys-rep[1/1] [10%                         ] num_bits_64.nsys-rep[1/1] [9%                          ] num_bits_64.nsys-rep[1/1] [11%                         ] num_bits_64.nsys-rep[1/1] [10%                         ] num_bits_64.nsys-rep[1/1] [11%                         ] num_bits_64.nsys-rep[1/1] [12%                         ] num_bits_64.nsys-rep[1/1] [13%                         ] num_bits_64.nsys-rep[1/1] [12%                         ] num_bits_64.nsys-rep[1/1] [14%                         ] num_bits_64.nsys-rep[1/1] [13%                         ] num_bits_64.nsys-rep[1/1] [14%                         ] num_bits_64.nsys-rep[1/1] [=15%                        ] num_bits_64.nsys-rep[1/1] [14%                         ] num_bits_64.nsys-rep[1/1] [=15%                        ] num_bits_64.nsys-rep[1/1] [14%                         ] num_bits_64.nsys-rep[1/1] [=16%                        ] num_bits_64.nsys-rep[1/1] [=15%                        ] num_bits_64.nsys-rep[1/1] [=16%                        ] num_bits_64.nsys-rep[1/1] [=15%                        ] num_bits_64.nsys-rep[1/1] [=17%                        ] num_bits_64.nsys-rep[1/1] [=16%                        ] num_bits_64.nsys-rep[1/1] [=17%                        ] num_bits_64.nsys-rep[1/1] [=16%                        ] num_bits_64.nsys-rep[1/1] [=17%                        ] num_bits_64.nsys-rep[1/1] [=16%                        ] num_bits_64.nsys-rep[1/1] [=17%                        ] num_bits_64.nsys-rep[1/1] [==18%                       ] num_bits_64.nsys-rep[1/1] [=17%                        ] num_bits_64.nsys-rep[1/1] [==18%                       ] num_bits_64.nsys-rep[1/1] [=17%                        ] num_bits_64.nsys-rep[1/1] [==18%                       ] num_bits_64.nsys-rep[1/1] [==19%                       ] num_bits_64.nsys-rep[1/1] [==18%                       ] num_bits_64.nsys-rep[1/1] [==19%                       ] num_bits_64.nsys-rep[1/1] [==18%                       ] num_bits_64.nsys-rep[1/1] [==19%                       ] num_bits_64.nsys-rep[1/1] [==18%                       ] num_bits_64.nsys-rep[1/1] [==19%                       ] num_bits_64.nsys-rep[1/1] [==20%                       ] num_bits_64.nsys-rep[1/1] [==21%                       ] num_bits_64.nsys-rep[1/1] [===22%                      ] num_bits_64.nsys-rep[1/1] [===23%                      ] num_bits_64.nsys-rep[1/1] [===24%                      ] num_bits_64.nsys-rep[1/1] [====25%                     ] num_bits_64.nsys-rep[1/1] [====26%                     ] num_bits_64.nsys-rep[1/1] [====27%                     ] num_bits_64.nsys-rep[1/1] [====28%                     ] num_bits_64.nsys-rep[1/1] [=====29%                    ] num_bits_64.nsys-rep[1/1] [=====30%                    ] num_bits_64.nsys-rep[1/1] [=====31%                    ] num_bits_64.nsys-rep[1/1] [=====32%                    ] num_bits_64.nsys-rep[1/1] [======33%                   ] num_bits_64.nsys-rep[1/1] [======34%                   ] num_bits_64.nsys-rep[1/1] [======35%                   ] num_bits_64.nsys-rep[1/1] [=======36%                  ] num_bits_64.nsys-rep[1/1] [=======37%                  ] num_bits_64.nsys-rep[1/1] [=======38%                  ] num_bits_64.nsys-rep[1/1] [=======39%                  ] num_bits_64.nsys-rep[1/1] [========40%                 ] num_bits_64.nsys-rep[1/1] [========41%                 ] num_bits_64.nsys-rep[1/1] [========42%                 ] num_bits_64.nsys-rep[1/1] [=========43%                ] num_bits_64.nsys-rep[1/1] [=========44%                ] num_bits_64.nsys-rep[1/1] [=========45%                ] num_bits_64.nsys-rep[1/1] [=========46%                ] num_bits_64.nsys-rep[1/1] [==========47%               ] num_bits_64.nsys-rep[1/1] [==========48%               ] num_bits_64.nsys-rep[1/1] [==========49%               ] num_bits_64.nsys-rep[1/1] [===========50%              ] num_bits_64.nsys-rep[1/1] [===========51%              ] num_bits_64.nsys-rep[1/1] [===========52%              ] num_bits_64.nsys-rep[1/1] [===========53%              ] num_bits_64.nsys-rep[1/1] [============54%             ] num_bits_64.nsys-rep[1/1] [============55%             ] num_bits_64.nsys-rep[1/1] [============56%             ] num_bits_64.nsys-rep[1/1] [============57%             ] num_bits_64.nsys-rep[1/1] [=============58%            ] num_bits_64.nsys-rep[1/1] [=============59%            ] num_bits_64.nsys-rep[1/1] [=============60%            ] num_bits_64.nsys-rep[1/1] [==============61%           ] num_bits_64.nsys-rep[1/1] [==============62%           ] num_bits_64.nsys-rep[1/1] [==============63%           ] num_bits_64.nsys-rep[1/1] [==============64%           ] num_bits_64.nsys-rep[1/1] [===============65%          ] num_bits_64.nsys-rep[1/1] [===============66%          ] num_bits_64.nsys-rep[1/1] [===============67%          ] num_bits_64.nsys-rep[1/1] [================68%         ] num_bits_64.nsys-rep[1/1] [================69%         ] num_bits_64.nsys-rep[1/1] [================70%         ] num_bits_64.nsys-rep[1/1] [================71%         ] num_bits_64.nsys-rep[1/1] [=================72%        ] num_bits_64.nsys-rep[1/1] [=================73%        ] num_bits_64.nsys-rep[1/1] [=================74%        ] num_bits_64.nsys-rep[1/1] [==================75%       ] num_bits_64.nsys-rep[1/1] [==================76%       ] num_bits_64.nsys-rep[1/1] [==================77%       ] num_bits_64.nsys-rep[1/1] [==================78%       ] num_bits_64.nsys-rep[1/1] [===================79%      ] num_bits_64.nsys-rep[1/1] [===================80%      ] num_bits_64.nsys-rep[1/1] [========================100%] num_bits_64.nsys-rep[1/1] [========================100%] num_bits_64.nsys-rep
+Generated:
+    /scr/dataset/yuke/xinrui/stable_signature/num_bits_64.nsys-rep
+Finished testing with num_bits=64
+---------------------------------------

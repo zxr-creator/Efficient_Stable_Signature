@@ -1,0 +1,17 @@
+dataset/*
+sd/*
+cache/
+conda_env/
+src/*
+results/*
+__pycache__/
+checkpoint_000.pth
+output/*
+python-qrcode/*
+profile_results/*
+hidden/output/*
+hidden/reserve/
+report1.nsys-rep
+report2.nsys-rep
+command_list.txt
+output/checkpoint_000.pth
