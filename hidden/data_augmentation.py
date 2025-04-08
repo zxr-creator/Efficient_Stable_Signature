@@ -13,7 +13,9 @@ from torchvision import transforms
 from torchvision.transforms import functional
 
 import kornia.augmentation as K
+import kornia
 from kornia.augmentation import AugmentationBase2D
+from kornia.geometry.transform import resize
 
 import utils_img
 
@@ -73,7 +75,7 @@ class RandomBlur(AugmentationBase2D):
             output[ii] = self.gaussian_blurs[blur_strength[ii]](input[ii:ii+1])
         return output
 
-
+'''
 class HiddenAug(nn.Module):
     """Dropout p = 0.3,Dropout p = 0.7, Cropout p = 0.3, Cropout p = 0.7, Crop p = 0.3, Crop p = 0.7, Gaussian blur σ = 2, Gaussian blur σ = 4, JPEG-drop, JPEG-mask and the Identity layer"""
     def __init__(self, img_size, p_crop=0.3, p_blur=0.3, p_jpeg=0.3, p_rot=0.3, p_color_jitter=0.3, p_res=0.3):
@@ -118,7 +120,78 @@ class HiddenAug(nn.Module):
         
     def forward(self, x):
         return self.hidden_aug(x)
+'''
 
+class HiddenAug(nn.Module):
+    def __init__(self, img_size, tile_size=32, tile_y=0, tile_x=0, p_crop=0.3, p_blur=0.3, p_jpeg=0.3,
+                 p_rot=0.3, p_color_jitter=0.3, p_res=0.3):
+        super().__init__()
+        self.tile_size = tile_size
+        self.tile_y = tile_y
+        self.tile_x = tile_x
+
+        augmentations = [nn.Identity(), K.RandomHorizontalFlip(p=1)]
+        
+        if p_crop > 0:
+            crop1 = int(img_size * np.sqrt(0.3))
+            crop2 = int(img_size * np.sqrt(0.7))
+            augmentations += [
+                K.RandomCrop(size=(crop1, crop1), p=1),
+                K.RandomCrop(size=(crop2, crop2), p=1)
+            ]
+        if p_res > 0:
+            res1 = int(img_size * np.sqrt(0.3))
+            res2 = int(img_size * np.sqrt(0.7))
+            augmentations += [
+                K.RandomResizedCrop(size=(res1, res1), scale=(1.0, 1.0), p=1),
+                K.RandomResizedCrop(size=(res2, res2), scale=(1.0, 1.0), p=1)
+            ]
+        if p_blur > 0:
+            augmentations += [
+                K.RandomGaussianBlur(kernel_size=(11,11), sigma=(2.0, 2.0), p=1),
+                # K.RandomGaussianBlur(kernel_size=(25,25), sigma=(4.0, 4.0), p=1),
+            ]
+        if p_jpeg > 0:
+            augmentations += [
+                DiffJPEG(quality=50),
+                DiffJPEG(quality=80)
+            ]
+        if p_rot > 0:
+            augmentations += [
+                K.RandomAffine(degrees=(-10,10), p=1),
+                K.RandomAffine(degrees=(90,90), p=1),
+                K.RandomAffine(degrees=(-90,-90), p=1)
+            ]
+        if p_color_jitter > 0:
+            augmentations += [
+                ColorJiggle(brightness=(1.5, 1.5), contrast=0, saturation=0, hue=0, p=1),
+                ColorJiggle(brightness=0, contrast=(1.5, 1.5), saturation=0, hue=0, p=1),
+                ColorJiggle(brightness=0, contrast=0, saturation=(1.5, 1.5), hue=0, p=1),
+                ColorJiggle(brightness=0, contrast=0, saturation=0, hue=(0.25, 0.25), p=1)
+            ]
+
+        self.hidden_aug = K.AugmentationSequential(
+            *augmentations,
+            K.Resize((self.tile_size, self.tile_size), antialias=True),  # Force output to fixed size
+            random_apply=1
+        ).to(device)
+
+    def forward(self, x):
+        _, (y, x_coord) = utils_img.fixed_grid_mask_2d(x, self.tile_size, self.tile_y, self.tile_x)
+
+        tile = x[:, :, y:y + self.tile_size, x_coord:x_coord + self.tile_size]
+
+        # Apply augmentations
+        augmented_tile = self.hidden_aug(tile)
+
+        # Explicitly resize regardless of what the augmentation did
+        if augmented_tile.shape[-2:] != (self.tile_size, self.tile_size):
+            augmented_tile = resize(augmented_tile, (self.tile_size, self.tile_size), antialias=True)
+        output = x.clone()
+        output[:, :, y:y + self.tile_size, x_coord:x_coord + self.tile_size] = augmented_tile
+
+        return output
+    
 class KorniaAug(nn.Module):
     def __init__(self, degrees=30, crop_scale=(0.2, 1.0), crop_ratio=(3/4, 4/3), blur_size=17, color_jitter=(1.0, 1.0, 1.0, 0.3), diff_jpeg=10,
                 p_crop=0.5, p_aff=0.5, p_blur=0.5, p_color_jitter=0.5, p_diff_jpeg=0.5, 

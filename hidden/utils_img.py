@@ -247,46 +247,21 @@ def random_grid_mask_2d(images, mask_size=32):
     return masked_images
 
 def fixed_grid_mask_2d(images, mask_size=32, tile_y=0, tile_x=0):
-    """
-    images: (B, C, H, W) tensor
-    mask_size: integer, e.g. 32
-    tile_y: integer, fixed tile index in height (default 0)
-    tile_x: integer, fixed tile index in width (default 0)
-
-    Returns masked_images where only the specified fixed tile 
-    remains (non-zero) per sample. The rest is zeroed out.
-    """
+    
     B, C, H, W = images.shape
     if H < mask_size or W < mask_size:
-        raise ValueError(
-            f"Image size ({H}x{W}) is smaller than mask size ({mask_size}x{mask_size})."
-        )
+        raise ValueError(f"Image size ({H}x{W}) is smaller than mask size ({mask_size}x{mask_size}).")
 
-    # Calculate number of tiles in height and width
-    num_tiles_h = H // mask_size  # Integer division for fixed grid
+    num_tiles_h = H // mask_size
     num_tiles_w = W // mask_size
 
-    if num_tiles_h == 0 or num_tiles_w == 0:
-        raise ValueError(
-            f"Image dimensions ({H}x{W}) must support at least one {mask_size}x{mask_size} tile."
-        )
-
-    # Ensure the specified tile indices are valid
     if tile_y < 0 or tile_y >= num_tiles_h:
         raise ValueError(f"tile_y ({tile_y}) must be between 0 and {num_tiles_h - 1}.")
     if tile_x < 0 or tile_x >= num_tiles_w:
         raise ValueError(f"tile_x ({tile_x}) must be between 0 and {num_tiles_w - 1}.")
 
-    # Create an all-zeros mask the same size as 'images'
     mask = torch.zeros_like(images)
-
-    # Convert fixed tile indices to pixel coordinates
     y = tile_y * mask_size
     x = tile_x * mask_size
-
-    # Set the fixed tile region to 1 in the mask for all samples
     mask[:, :, y:y + mask_size, x:x + mask_size] = 1.0
-
-    # Elementwise-multiply images by the mask
-    masked_images = images * mask
-    return masked_images
+    return images * mask, (y, x)

@@ -260,6 +260,7 @@ class EncoderDecoder(nn.Module):
 
         # encoder
         deltas_w = self.encoder(imgs, msgs) # b c h w
+        
 
         # scaling channels: more weight to blue channel
         if self.scale_channels:
@@ -272,19 +273,27 @@ class EncoderDecoder(nn.Module):
             heatmaps = self.attenuation.heatmaps(imgs) # b 1 h w
             deltas_w = deltas_w * heatmaps # b c h w * b 1 h w -> b c h w
         imgs_w = self.scaling_i * imgs + self.scaling_w * deltas_w # b c h w
-
+        if self.tile:
+            if self.tile_type == 'random':
+                imgs_aug, (_, _) = utils_img.random_mask_2d(imgs_aug, mask_size=self.tile_size)
+            elif self.tile_type == 'random_grid':
+                imgs_aug, (_, _) = utils_img.random_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
+            elif self.tile_type == 'grid':
+                imgs_aug, (_, _) = utils_img.fixed_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
         # data augmentation
         if eval_mode:
             imgs_aug = eval_aug(imgs_w)
         else:
             imgs_aug = self.augmentation(imgs_w)
+            '''
             if self.tile:
                 if self.tile_type == 'random':
-                    imgs_aug = utils_img.random_mask_2d(imgs_aug, mask_size=self.tile_size)
+                    imgs_aug, (_, _) = utils_img.random_mask_2d(imgs_aug, mask_size=self.tile_size)
                 elif self.tile_type == 'random_grid':
-                    imgs_aug = utils_img.random_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
+                    imgs_aug, (_, _) = utils_img.random_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
                 elif self.tile_type == 'grid':
-                    imgs_aug = utils_img.fixed_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
+                    imgs_aug, (_, _) = utils_img.fixed_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
+            '''        
         fts = self.decoder(imgs_aug) # b c h w -> b d
             
         fts = fts.view(-1, self.num_bits, self.redundancy) # b k*r -> b k r

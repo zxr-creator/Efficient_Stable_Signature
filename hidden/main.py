@@ -204,7 +204,8 @@ def main(params):
 
     # Construct data augmentation seen at train time
     if params.data_augmentation == 'combined':
-        data_aug = data_augmentation.HiddenAug(params.img_size, params.p_crop, params.p_blur,  params.p_jpeg, params.p_rot,  params.p_color_jitter, params.p_res).to(device)
+        #data_aug = data_augmentation.HiddenAug(params.img_size, params.p_crop, params.p_blur,  params.p_jpeg, params.p_rot,  params.p_color_jitter, params.p_res).to(device)
+        data_aug = data_augmentation.HiddenAug(params.img_size, params.tile_size, 0, 0, params.p_crop, params.p_blur,  params.p_jpeg, params.p_rot,  params.p_color_jitter, params.p_res).to(device)
     elif params.data_augmentation == 'kornia':
         data_aug = data_augmentation.KorniaAug().to(device)
     elif params.data_augmentation == 'none':

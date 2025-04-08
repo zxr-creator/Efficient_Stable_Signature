@@ -173,4 +173,4 @@ python run_eval.py --eval_imgs True --eval_bits False \
 will return a csv file containing image metrics (PSNR, SSIM, LPIPS) between watermarked (`_w`) and non-watermarked (`_nw`) images.
 
 
-
+Test set: 32, 48, 64, 80
