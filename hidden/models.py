@@ -259,27 +259,25 @@ class EncoderDecoder(nn.Module):
         """
 
         # encoder
+        if self.tile:
+            if self.tile_type == 'random':
+                imgs, (_, _) = utils_img.random_mask_2d(imgs, mask_size=self.tile_size)
+            elif self.tile_type == 'random_grid':
+                imgs, (_, _) = utils_img.random_grid_mask_2d(imgs, mask_size=self.tile_size)
+            elif self.tile_type == 'grid':
+                imgs, (_, _) = utils_img.fixed_grid_mask_2d(imgs, mask_size=self.tile_size)
         deltas_w = self.encoder(imgs, msgs) # b c h w
-        
-
         # scaling channels: more weight to blue channel
         if self.scale_channels:
             aa = 1/4.6 # such that aas has mean 1
             aas = torch.tensor([aa*(1/0.299), aa*(1/0.587), aa*(1/0.114)]).to(imgs.device) 
             deltas_w = deltas_w * aas[None,:,None,None]
-
         # add heatmaps
         if self.attenuation is not None:
             heatmaps = self.attenuation.heatmaps(imgs) # b 1 h w
             deltas_w = deltas_w * heatmaps # b c h w * b 1 h w -> b c h w
         imgs_w = self.scaling_i * imgs + self.scaling_w * deltas_w # b c h w
-        if self.tile:
-            if self.tile_type == 'random':
-                imgs_aug, (_, _) = utils_img.random_mask_2d(imgs_aug, mask_size=self.tile_size)
-            elif self.tile_type == 'random_grid':
-                imgs_aug, (_, _) = utils_img.random_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
-            elif self.tile_type == 'grid':
-                imgs_aug, (_, _) = utils_img.fixed_grid_mask_2d(imgs_aug, mask_size=self.tile_size)
+
         # data augmentation
         if eval_mode:
             imgs_aug = eval_aug(imgs_w)
